@@ -16,7 +16,9 @@
     <div id="app">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">
+            <!-- <img src="../src/assets/images/logo.png" alt=""> -->
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -66,8 +68,11 @@
           </div>
         </div>
       </nav>
-      <div id="nav"></div>
+      <br><br>
+      <div class="body">
+        <br>
       <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -98,5 +103,18 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.body {
+    width: 70%;
+    min-height: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    border: 1px solid rosybrown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-break: break-all;
 }
 </style>

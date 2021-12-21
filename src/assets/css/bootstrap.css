@@ -4868,7 +4868,7 @@ fieldset:disabled .btn {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: white;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
@@ -4904,11 +4904,11 @@ fieldset:disabled .btn {
 .card-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  padding: 0rem 1rem;
 }
 
 .card-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
 }
 
 .card-subtitle {
@@ -4925,10 +4925,10 @@ fieldset:disabled .btn {
 }
 
 .card-header {
-  padding: 0.5rem 1rem;
+  padding: 0rem 0rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  /* background-color: white; */
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0); */
 }
 
 .card-header:first-child {
