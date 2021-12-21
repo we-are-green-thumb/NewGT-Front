@@ -8477,6 +8477,13 @@ fieldset:disabled .btn {
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-logInNav {
+  --bs-bg-opacity: 1;
+  background-color: white;
+  height: 30px;
+}
+
+
 .bg-secondary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
