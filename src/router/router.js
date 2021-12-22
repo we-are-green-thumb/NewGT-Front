@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import IndexMain from '../views/main/IndexMain.vue'
-import Login from "../views/account/Login.vue"
-import Signup from "../views/account/Signup.vue"
+import login from "../views/account/Login.vue"
+import signup from "../views/account/Signup.vue"
 import mypage from "../views/mypage/Indexmypage.vue"
 import plant from "../views/plant/Indexplant.vue"
 import plantplus from "../views/plant/Indexplantplus.vue"
@@ -24,13 +24,13 @@ const routes = [
   },
   {
     path: '/auth/login',
-    name: 'Login',
-    component: Login
+    name: 'login',
+    component: login
   },
   {
     path: '/auth/signup',
-    name: 'Signup',
-    component: Signup
+    name: 'signup',
+    component: signup
   },
   {
     path: '/mypage',
