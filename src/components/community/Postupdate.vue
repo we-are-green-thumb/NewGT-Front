@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글 
+        게시글 수정
     </div>
 </template>
 <script>
