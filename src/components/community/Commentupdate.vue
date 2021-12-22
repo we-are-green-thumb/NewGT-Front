@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글 
+        댓글 수정하기
     </div>
 </template>
 <script>

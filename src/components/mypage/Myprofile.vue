@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글 
+        내 정보
     </div>
 </template>
 <script>

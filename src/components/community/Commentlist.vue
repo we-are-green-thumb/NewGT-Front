@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글 
+        댓글 리스트 -> 수정하기 누르면 commentupdate으로
     </div>
 </template>
 <script>

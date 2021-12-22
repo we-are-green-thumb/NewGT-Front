@@ -1,13 +1,15 @@
 <template>
     <div>
-        내 댓글 
+        Main
     </div>
 </template>
+
 <script>
 export default {
     
 }
 </script>
+
 <style>
     
 </style>

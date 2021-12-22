@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글 
+        내 피드 프로필
     </div>
 </template>
 <script>

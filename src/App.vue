@@ -1,7 +1,9 @@
 <template>
-  <div id="bar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-logInNav">
-      <div class="collapse navbar-collapse" id="navbarColor">
+  <div id="basr">
+    <!-- nav class에 navbar-dark 삭제함 -->
+    <nav class="navbar navbar-expand-lg bg-logInNav">
+      <!--div class에 collapse 삭제 -->
+      <div class="navbar-collapse" id="navbarColor">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link" href="/auth/login">
@@ -48,7 +50,7 @@
                 <a class="nav-link" href="#">내식물</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">커뮤니티</a>
+                <a class="nav-link" href="/community">커뮤니티</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">식물 MBTI</a>
@@ -60,7 +62,7 @@
                 <a class="nav-link"  href="/plantplus">식물등록</a>
               </li>
             </ul>
-            <form class="d-flex">
+            <form class="d-flex"> 
               <input
                 class="form-control me-sm-2"
                 type="text"
@@ -119,8 +121,4 @@ export default {
     word-break: break-all;
 }
 
-#navbarColor {
-  background-color: #ffffff;
-  position: relative;
-}
 </style>

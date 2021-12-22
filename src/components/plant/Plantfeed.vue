@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글 
+        식물 피드
     </div>
 </template>
 <script>
