@@ -1,74 +1,98 @@
 <template>
-  <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarColor01"
-          aria-controls="navbarColor01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#"
-                >Home
-                <span class="visually-hidden">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Dropdown</a
-              >
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-sm-2"
-              type="text"
-              placeholder="Search"
-            />
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
+  <div id="basr">
+    <!-- nav class에 navbar-dark 삭제함 -->
+    <nav class="navbar navbar-expand-lg bg-logInNav">
+      <!--div class에 collapse 삭제 -->
+      <div class="navbar-collapse" id="navbarColor">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/login">
+              <img src="./assets/images/user.png"  width="30" height="30">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/signup">
+              <img src="./assets/images/signup.png"  width="25" height="23">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mypage">
+              <img src="./assets/images/mypage.png"  width="35" height="33">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <img src="./assets/images/logout.png"  width="40" height="33">
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
-    <div id="nav"></div>
-    <router-view />
+
+    <div id="app">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <!-- <img src="../src/assets/images/logo.png" alt=""> -->
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/"
+                  >홈
+                  <!-- <img src="./assets/images/miniLogo.png" width="50" height="50"> -->
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">내식물</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/community">커뮤니티</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">식물 MBTI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">식물병원</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">식물등록</a>
+              </li>
+            </ul>
+            <form class="d-flex"> 
+              <input
+                class="form-control me-sm-2"
+                type="text"
+                placeholder="어떤 식물들이 있을까요?"
+              />
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                <img src="./assets/images/natural.png" width="30" height="30" style="filter:invert(100%);">
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <br><br>
+      <div class="body">
+        <br>
+      <router-view />
+      </div>
+    </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -85,16 +109,26 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
+#bar {
   padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  color: rgb(167, 82, 82);
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #4297b9;
 }
+
+.body {
+    width: 70%;
+    min-height: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    border: 1px solid burlywood;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-break: break-all;
+}
+
 </style>
