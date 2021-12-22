@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import IndexMain from '../views/main/IndexMain.vue'
+import IndexMain from '../views/main/indexMain.vue'
 import Login from "../views/account/Login.vue"
 import Signup from "../views/account/Signup.vue"
 import mypage from "../views/mypage/Indexmypage.vue"
 import plant from "../views/plant/Indexplant.vue"
-import plantplus from "../views/plant/Indexplantplus.vue"
-import hospital from "../views/hospital/IndexHospital.vue"
-import community from "../views/community/IndexCommunity.vue"
+import plantplus from "../views/plant/indexplantplus.vue"
+import hospital from "../views/hospital/indexHospital.vue"
+import community from "../views/community/indexCommunity.vue"
 
 Vue.use(VueRouter)
 
