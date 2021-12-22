@@ -66,32 +66,32 @@ export default new Vuex.Store({
           router.push({ name: "IndexMain" });
         });
     },
-    getUserInfo({ commit }) {
-      if (localStorage.getItem("getToken") !== null) {
-        //토큰 -> 멤버 정보 반환 .. 토큰만 저장해두면 새로고침해도 사용가능 local storage에 저장하자. 밑에 새로 만든다.
-        let token = localStorage.getItem("getToken");
-        let id = localStorage.getItem("getId");
+    // getUserInfo({ commit }) {
+    //   if (localStorage.getItem("getToken") !== null) {
+    //     //토큰 -> 멤버 정보 반환 .. 토큰만 저장해두면 새로고침해도 사용가능 local storage에 저장하자. 밑에 새로 만든다.
+    //     let token = localStorage.getItem("getToken");
+    //     let id = localStorage.getItem("getId");
 
-        http
-          .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
-          .then((response) => {
-            console.log(response);
+    //     http
+    //       .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
+    //       .then((response) => {
+    //         console.log(response);
 
-            let userInfo = {
-              userId: id,
-              email: response.data.email,
-            };
-            commit("loginSuccess", userInfo);
-          })
-          .catch((error) => {
-            console.log(error);
-            alert("로그인을 실패했어요.");
-          })
-          .then(() => {});
-      } else {
-        commit("logouted");
-      }
-    },
+    //         let userInfo = {
+    //           userId: id,
+    //           email: response.data.email,
+    //         };
+    //         commit("loginSuccess", userInfo);
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //         alert("로그인을 실패했어요.");
+    //       })
+    //       .then(() => {});
+    //   } else {
+    //     commit("logouted");
+    //   }
+    // },
     logout({ commit }) {
       alert("로그아웃 되었습니다.");
       let token = localStorage.getItem("getToken");
