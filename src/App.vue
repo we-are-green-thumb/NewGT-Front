@@ -1,13 +1,17 @@
 <template>
-  <div>
+  <div id="bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-logInNav">
-      <div class="collapse navbar-collapse" id="navbarColor01">
+      <div class="collapse navbar-collapse" id="navbarColor">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color:black;">로그인</a>
+            <a class="nav-link" href="/auth/login">
+              <img src="./assets/images/user.png"  width="30" height="30">
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color:black;">회원가입</a>
+            <a class="nav-link" href="/auth/signup">
+              <img src="./assets/images/dsBuffe.png"  width="25" height="24">
+            </a>
           </li>
         </ul>
       </div>
@@ -34,8 +38,9 @@
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="#"
-                  >Home
+                <a class="nav-link active" href="/"
+                  >홈
+                  <!-- <img src="./assets/images/miniLogo.png" width="50" height="50"> -->
                   <span class="visually-hidden">(current)</span>
                 </a>
               </li>
@@ -59,10 +64,10 @@
               <input
                 class="form-control me-sm-2"
                 type="text"
-                placeholder="Search"
+                placeholder="식물 이름 검색"
               />
               <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                Search
+                <img src="./assets/images/natural.png" width="30" height="30" style="filter:invert(100%);">
               </button>
             </form>
           </div>
@@ -92,17 +97,13 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
+#bar {
   padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  color: rgb(167, 82, 82);
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #4297b9;
 }
 
 .body {
@@ -111,10 +112,15 @@ export default {
     margin-right: auto;
     margin-left: auto;
     background-color: white;
-    border: 1px solid rosybrown;
+    border: 1px solid burlywood;
     display: flex;
     flex-direction: column;
     align-items: center;
     word-break: break-all;
+}
+
+#navbarColor {
+  background-color: #ffffff;
+  position: relative;
 }
 </style>
