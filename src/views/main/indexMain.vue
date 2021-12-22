@@ -1,5 +1,5 @@
 <template>
-  <ul style="display: flex;  flex-wrap: wrap;
+  <ul style="display: flex; flex-wrap: wrap;
   gap: 10px;">
     <div
       class="card border-primary mb-3"
