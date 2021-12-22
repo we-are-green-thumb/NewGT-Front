@@ -1,6 +1,6 @@
 <template>
     <div>
-        내 댓글
+        내 댓글 
     </div>
 </template>
 <script>
