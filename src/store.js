@@ -63,14 +63,15 @@ export default new Vuex.Store({
 
           // sessionStorage.setItem("getToken",token)
           dispatch("getUserInfo");
+          console.log('로그인 됐나')
           router.push({ name: "IndexMain" });
         });
     },
-    // getUserInfo({ commit }) {
-    //   if (localStorage.getItem("getToken") !== null) {
-    //     //토큰 -> 멤버 정보 반환 .. 토큰만 저장해두면 새로고침해도 사용가능 local storage에 저장하자. 밑에 새로 만든다.
-    //     let token = localStorage.getItem("getToken");
-    //     let id = localStorage.getItem("getId");
+    getUserInfo({ commit }) {
+      if (localStorage.getItem("getToken") !== null) {
+        //토큰 -> 멤버 정보 반환 .. 토큰만 저장해두면 새로고침해도 사용가능 local storage에 저장하자. 밑에 새로 만든다.
+        let token = localStorage.getItem("getToken");
+        let id = localStorage.getItem("getId");
 
     //     http
     //       .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
