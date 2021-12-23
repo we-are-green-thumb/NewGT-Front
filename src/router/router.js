@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import IndexMain from '../views/main/indexMain.vue'
+import IndexMain from '../views/main/IndexMain.vue'
 import login from "../views/account/Login.vue"
 import signup from "../views/account/Signup.vue"
 
