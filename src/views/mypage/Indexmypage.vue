@@ -42,12 +42,13 @@
       <label for="formFile" class="form-label mt-4">프로필 사진</label>
       <input class="form-control" type="file" id="formFile">
     </div>
-
     </div>
 </template>
 
 <script>
 export default {
+  
+    
 }
 </script>
 
