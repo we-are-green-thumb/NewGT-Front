@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form>
+    <form @submit="onSubmit">
       <fieldset>
         <legend>
           <img src="../../assets/images/logo.png" width="500" height="100">
@@ -18,7 +18,8 @@
             type="email"
             class="form-control"
             id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            v-model="email"
+            :rules="emailRules"
           />
           <br>
         </div>
@@ -30,22 +31,59 @@
             type="password"
             class="form-control"
             id="exampleInputPassword1"
+            v-model="password"
+            :counter="10"
           />
-          <br><br><br>
+          <br><br>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
         </fieldset>
-    </form>
+        </form>
+      <button class="btn btn-primary" @click="login({email,password})">로그인</button>
+      <br><br>
   </div>
 </template>
 
 <script>
 // import OAuth2Login from '../../components/account/OAuth2Login.vue';
-
+import {mapState, mapActions} from "vuex"
 export default {
   // components : {
   //   OAuth2Login
   // },
+  data: () => ({
+    valid: true,
+    // allUser: [],
+    password: "",
+    email: "",
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    ],
+
+  }),
+
+computed : {
+    ...mapState(["isLogin", "isLonginError"]),
+    // ...mapState({allUser: state => state.allUser})
+},
+  methods: {
+      ...mapActions(["login"])
+
+    },
+      beforeCreate() {
+      this.$store.getters.loginCheck;
+      
+      },
+
+  validate() {
+    this.$refs.form.validate();
+  },
+  reset() {
+    this.$refs.form.reset();
+  },
+  resetValidation() {
+    this.$refs.form.resetValidation();
+  }
 }
 </script>
 

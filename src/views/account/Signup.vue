@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form>
+    <v-form v-model="form">
       <fieldset>
         <legend>
           <img src="../../assets/images/logo.png" width="500" height="100">
@@ -18,7 +18,8 @@
             type="email"
             class="form-control"
             id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            v-model="email"
+            :rules="[rules.email]"
           />
           <br>
         </div>
@@ -30,176 +31,82 @@
             type="password"
             class="form-control"
             id="exampleInputPassword1"
+            v-model="password"
+            :rules="[rules.password, rules.length(6)]"
           />
-          <br><br><br>
-        </div>
-        <!-- <div class="form-group">
-          <label for="exampleSelect1" class="form-label mt-4">
-            Example select
-          </label>
-          <select class="form-select" id="exampleSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <br>
         </div>
         <div class="form-group">
-          <label for="exampleSelect2" class="form-label mt-4">
-            Example multiple select
-          </label>
-          <select multiple="" class="form-select" id="exampleSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <label for="exampleSelect1" class="form-label mt-4" style="float:left;">닉네임</label>
+          <input type="text" class="form-control" id="inputDefault">
         </div>
-        <div class="form-group">
-          <label for="exampleTextarea" class="form-label mt-4">
-            Example textarea
-          </label>
-          <textarea
-            class="form-control"
-            id="exampleTextarea"
-            rows="3"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="formFile" class="form-label mt-4">
-            Default file input example
-          </label>
-          <input class="form-control" type="file" id="formFile" />
-        </div>
-        <fieldset class="form-group">
-          <legend class="mt-4">Radio buttons</legend>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input
-                type="radio"
-                class="form-check-input"
-                name="optionsRadios"
-                id="optionsRadios1"
-                value="option1"
-                checked=""
-              />
-              Option one is this and that—be sure to include why it's great
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input
-                type="radio"
-                class="form-check-input"
-                name="optionsRadios"
-                id="optionsRadios2"
-                value="option2"
-              />
-              Option two can be something else and selecting it will deselect
-              option one
-            </label>
-          </div>
-          <div class="form-check disabled">
-            <label class="form-check-label">
-              <input
-                type="radio"
-                class="form-check-input"
-                name="optionsRadios"
-                id="optionsRadios3"
-                value="option3"
-                disabled=""
-              />
-              Option three is disabled
-            </label>
-          </div>
         </fieldset>
-        <fieldset class="form-group">
-          <legend class="mt-4">Checkboxes</legend>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckChecked"
-              checked=""
-            />
-            <label class="form-check-label" for="flexCheckChecked">
-              Checked checkbox
-            </label>
-          </div>
-        </fieldset>
+        <br>
+
+        <div class="form-group">
+      <label for="exampleSelect1" class="form-label mt-4" style="float:left;">프로필 사진</label>
+      <input class="form-control" type="file" id="formFile">
+    </div>
+        <br><br>
         <fieldset>
-          <legend class="mt-4">Switches</legend>
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="flexSwitchCheckDefault"
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault">
-              Default switch checkbox input
-            </label>
-          </div>
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="flexSwitchCheckChecked"
-              checked=""
-            />
-            <label class="form-check-label" for="flexSwitchCheckChecked">
-              Checked switch checkbox input
-            </label>
-          </div>
-        </fieldset>
-        <fieldset class="form-group">
-          <legend class="mt-4">Ranges</legend>
-          <label for="customRange1" class="form-label">Example range</label>
-          <input type="range" class="form-range" id="customRange1" />
-          <label for="disabledRange" class="form-label">Disabled range</label>
-          <input
-            type="range"
-            class="form-range"
-            id="disabledRange"
-            disabled=""
-          />
-          <label for="customRange3" class="form-label">Example range</label>
-          <input
-            type="range"
-            class="form-range"
-            min="0"
-            max="5"
-            step="0.5"
-            id="customRange3"
-          />
-        </fieldset> -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" 
+        @click="submitForm">회원가입</button>
       </fieldset>
-    </form>
+    </v-form>
   </div>
 </template>
 
 <script>
 // import OAuth2Login from '../../components/account/OAuth2Login.vue';
-
+import http from "@/util/http-common";
 export default {
   // components : {
   //   OAuth2Login
   // },
-}
+  name: "signup",
+
+  data () {
+    return {
+    agreement: false,
+    nickName: '',
+    dialog: false,
+    email: '',
+    form: false,
+    isLoading: false,
+    password: '',
+    password2: '',
+    rules: {
+      email: v => !!(v || '').match(/@/) || 'Please enter a valid email',
+      length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
+      password: v => !!(v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/) ||
+        'Password must contain an upper case letter, a numeric character, and a special character',
+      password2: v => v === this.password || "패스워드가 일치하지 않습니다.",
+      required: v => !!v || 'This field is required',
+    }
+  }
+},
+methods: {
+       submitForm() {
+      http
+        .post("/auth/signup", {
+          email: this.email,
+          password: this.password,
+          nickName: this.nickName,
+        })
+        .then((response) => {
+          if(response.data.success == true){
+            alert("회원가입 성공")
+            this.$router.push({ name: 'login'})
+          }else{
+            alert("회원가입 실패")
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    }
+  }
 </script>
 
 <style></style>
