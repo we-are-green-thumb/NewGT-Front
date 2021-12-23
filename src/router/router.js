@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import IndexMain from '../views/main/IndexMain.vue'
+import IndexMain from '../views/main/indexMain.vue'
 import login from "../views/account/Login.vue"
 import signup from "../views/account/Signup.vue"
+
 import mypage from "../views/mypage/Indexmypage.vue"
 import plant from "../views/plant/Indexplant.vue"
 import plantplus from "../views/plant/Indexplantplus.vue"
@@ -13,6 +14,7 @@ import community from "../views/community/IndexCommunity.vue"
 const Plantfeeddetail = () => {
   return import("../components/plant/Plantfeeddetail.vue");
 };
+
 
 Vue.use(VueRouter)
 

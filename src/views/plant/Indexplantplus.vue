@@ -36,6 +36,7 @@
         <input type="text"  class="form-control" id="staticEmail" placeholder="1"  v-model="temp" >
       </div>
     </div>
+    <p class="mb-3"></p>
     <button @click="registerPlant()" class="btn btn-primary">Submit</button>
   </fieldset>
 </form>
