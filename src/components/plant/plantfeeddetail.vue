@@ -10,11 +10,13 @@
         "
       >
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">나는 선선선이에요.</h5>
+          <h5 class="mb-1">{{Feed.nickName}}</h5>
           <ul>
             <router-link :to="{ name: 'plant' }">
-              <li style="text-decoration: none; color: black">
-                <small>👑식물 주인: ***</small>
+              <li >
+                <router-link :to="{ name: 'plant', params: { userId: this.$route.params.userId } }">
+                <small style="text-decoration: none; color: black">👑식물 주인: {{}}</small>
+                  </router-link>
               </li>
             </router-link>
           </ul>
@@ -29,15 +31,16 @@
         "
       >
         <ol>
+          
           <li>
             <img
               src="https://cdn.pixabay.com/photo/2016/11/13/10/50/board-1820678__480.jpg"
             />
             <p class="mb-3"></p>
           </li>
-          <li>한달에 *번 물을 주세요!</li>
-          <li>저는 *도를 가장 좋아합니다!</li>
-          <small class="text-muted">닉네임**의 가족은 **식물종 입니다.</small>
+          <li>한달에 {{myplant.water}}번 물을 주세요!</li>
+          <li>저는 {{myplant.temp}}도를 가장 좋아합니다!</li>
+          <small class="text-muted">{{myplant.nickName}}의 가족은 {{myplant.name}}라고 합니다.</small>
         </ol>
 
         <li style="text-align: right">
@@ -58,7 +61,10 @@
           grid-template-rows: 1fr 1fr;
         "
       >
-        <div class="card border-warning mb-3" style="max-width: 20rem">
+        <div class="card border-warning mb-3" 
+        style="max-width: 20rem"
+        
+        >
           <p class="mb-3"></p>
 
           <div class="card-body">
@@ -80,16 +86,57 @@
   </div>
 </template>
 <script>
+import http from "@/util/http-common";
+import { mapState } from "vuex";
+
 export default {
   name: "Plantfeeddetail",
+  data() {
+    return {
+      myplant: [],
+      Feed:[]
+    };
+  },
+  props: {
+    plantId: {
 
-
-    watch: {
-    $route(to, from) {
-      if (to.path != from.path) {
-        this.$router.go(this.$router.currentRoute);
-      }
     },
+    userId: {
+
+    },
+  },
+
+  computed: {
+    ...mapState(["userInfo"]),
+  },
+  created() {
+
+    let token = localStorage.getItem("getToken");
+    http
+      .get("/plant/" + this.$route.params.plantId, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        this.myplant = res.data;
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .then(() => {});
+
+      http
+      .get("user/" + this.$route.params.userId+"/feed", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.Feed = response.data;
+        console.log(response.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .then(() => {});
   },
 };
 </script>

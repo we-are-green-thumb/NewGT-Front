@@ -46,15 +46,14 @@ const routes = [
   },
   {
     // path: "/myplant/:userId",
-    path: "/plant",
+    path: "/plant/:userId",
     name: "plant",
     component: plant,
     props: true,
   },
 
   {
-    // path: "/myplant/:userId/:plantId",
-    path: "/oneplant",
+    path: "/oneplant/:userId/:plantId",
     name: "Plantfeeddetail",
     component: Plantfeeddetail,
     props: true
