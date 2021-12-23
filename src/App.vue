@@ -57,7 +57,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">내식물</a>
+                <a class="nav-link" href="/plant">내식물</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/community">커뮤니티</a>
@@ -66,10 +66,10 @@
                 <a class="nav-link" href="#">식물 MBTI</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">식물병원</a>
+                <a class="nav-link" href="/hospital">식물병원</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">식물등록</a>
+                <a class="nav-link"  href="/plantplus">식물등록</a>
               </li>
             </ul>
             <form class="d-flex"> 
