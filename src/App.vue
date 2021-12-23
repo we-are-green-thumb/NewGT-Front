@@ -1,5 +1,5 @@
 <template>
-  <div id="basr">
+  <div>
     <!-- nav class에 navbar-dark 삭제함 -->
     <nav class="navbar navbar-expand-lg bg-logInNav">
       <!--div class에 collapse 삭제 -->

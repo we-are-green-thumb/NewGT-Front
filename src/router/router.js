@@ -57,7 +57,6 @@ const routes = [
     name: 'community',
     component: community
   },
-
 ]
 
 const router = new VueRouter({
