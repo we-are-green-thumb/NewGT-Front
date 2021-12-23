@@ -73,25 +73,25 @@ export default new Vuex.Store({
         let token = localStorage.getItem("getToken");
         let id = localStorage.getItem("getId");
 
-    //     http
-    //       .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
-    //       .then((response) => {
-    //         console.log(response);
-    //         let userInfo = {
-    //           userId: id,
-    //           email: response.data.email,
-    //         };
-    //         commit("loginSuccess", userInfo);
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //         alert("로그인을 실패했어요.");
-    //       })
-    //       .then(() => {});
-    //   } else {
-    //     commit("logouted");
-    //   }
-    // },
+        http
+          .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
+          .then((response) => {
+            console.log(response);
+            let userInfo = {
+              userId: id,
+              email: response.data.email,
+            };
+            commit("loginSuccess", userInfo);
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("로그인을 실패했어요.");
+          })
+          .then(() => {});
+      } else {
+        commit("logouted");
+      }
+    },
 
     logout({ commit }) {
       alert("로그아웃 되었습니다.");
@@ -113,6 +113,6 @@ export default new Vuex.Store({
       localStorage.clear();
       commit("logouted");
       router.push({ name: "IndexMain" });
-    },
+    }
   },
 });
