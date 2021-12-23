@@ -76,7 +76,6 @@ export default new Vuex.Store({
     //       .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
     //       .then((response) => {
     //         console.log(response);
-
     //         let userInfo = {
     //           userId: id,
     //           email: response.data.email,
@@ -92,6 +91,7 @@ export default new Vuex.Store({
     //     commit("logouted");
     //   }
     // },
+
     logout({ commit }) {
       alert("로그아웃 되었습니다.");
       let token = localStorage.getItem("getToken");
