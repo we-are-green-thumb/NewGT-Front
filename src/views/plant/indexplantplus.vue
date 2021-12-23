@@ -37,7 +37,7 @@
       </div>
     </div>
     <p class="mb-3"></p>
-    <button @click="registerPlant()" class="btn btn-primary">Submit</button>
+    <button @click="registerPlant()" class="btn btn-primary">등록</button>
   </fieldset>
 </form>
     </div>
@@ -99,14 +99,15 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          this.$router.go(this.$router.currentRoute, alert("저장완료"));
+          // alert("저장완료")
+          // this.$router.push({name:"IndexMain"});
+          localStorage.removeItem('fileUrl');
         })
         .catch((err) => {
           console.log(err);
+          alert("저장실패")
         })
-        .then(() => {
-          this.$router.go(this.$router.currentRoute, alert("저장완료"));
-          localStorage.removeItem('fileUrl');
-        });
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="onSubmit">
+    <div>
       <fieldset>
         <legend>
           <img src="../../assets/images/logo.png" width="500" height="100">
@@ -37,19 +37,22 @@
           <br><br>
         </div>
         </fieldset>
-        </form>
       <button class="btn btn-primary" @click="login({email,password})">로그인</button>
+    </div>
       <br><br>
+      <section>
+      <OAuth2Login/>
+      </section>
   </div>
 </template>
 
 <script>
-// import OAuth2Login from '../../components/account/OAuth2Login.vue';
+import OAuth2Login from '../../components/account/OAuth2Login.vue';
 import {mapState, mapActions} from "vuex"
 export default {
-  // components : {
-  //   OAuth2Login
-  // },
+  components : {
+      OAuth2Login
+    },
   data: () => ({
     valid: true,
     // allUser: [],
@@ -86,5 +89,3 @@ computed : {
   }
 }
 </script>
-
-<style></style>
