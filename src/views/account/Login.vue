@@ -1,24 +1,17 @@
 <template>
   <div>
+    <div>
       <fieldset>
         <legend>
-          <img src="../../assets/images/logo.png" width="500" height="100" />
+          <img src="../../assets/images/logo.png" width="500" height="100">
         </legend>
         <div class="form-group row">
-          <br />
-          <v-img
-            src="https://i.ibb.co/1ZYtvQ8/logo.png"
-            height="100px"
-            width="500px"
-          />
-          <br />
+          <br>
+        <v-img src="https://i.ibb.co/1ZYtvQ8/logo.png" height="100px" width="500px"/>
+          <br>
         </div>
         <div class="form-group">
-          <label
-            for="exampleSelect1"
-            class="form-label mt-4"
-            style="float: left"
-          >
+          <label for="exampleSelect1" class="form-label mt-4" style="float:left;">
             이메일
           </label>
           <input
@@ -28,14 +21,10 @@
             v-model="email"
             :rules="emailRules"
           />
-          <br />
+          <br>
         </div>
         <div class="form-group">
-          <label
-            for="exampleSelect1"
-            class="form-label mt-4"
-            style="float: left"
-          >
+        <label for="exampleSelect1" class="form-label mt-4" style="float:left;">
             비밀번호
           </label>
           <input
@@ -45,24 +34,25 @@
             v-model="password"
             :counter="10"
           />
-          <br /><br />
+          <br><br>
         </div>
-      </fieldset>
-    <button class="btn btn-primary" @click="login({ email, password })">
-      로그인
-    </button>
-    <br /><br />
+        </fieldset>
+      <button class="btn btn-primary" @click="login({email,password})">로그인</button>
+    </div>
+      <br><br>
+      <section>
+      <OAuth2Login/>
+      </section>
   </div>
 </template>
 
 <script>
-// import OAuth2Login from '../../components/account/OAuth2Login.vue';
-import { mapState, mapActions } from "vuex";
-
+import OAuth2Login from '../../components/account/OAuth2Login.vue';
+import {mapState, mapActions} from "vuex"
 export default {
-  // components : {
-  //   OAuth2Login
-  // },
+  components : {
+      OAuth2Login
+    },
   data: () => ({
     valid: true,
     // allUser: [],
@@ -72,18 +62,21 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
+
   }),
 
-  computed: {
+computed : {
     ...mapState(["isLogin", "isLonginError"]),
     // ...mapState({allUser: state => state.allUser})
-  },
+},
   methods: {
-    ...mapActions(["login"]),
-  },
-  beforeCreate() {
-    this.$store.getters.loginCheck;
-  },
+      ...mapActions(["login"])
+
+    },
+      beforeCreate() {
+      this.$store.getters.loginCheck;
+      
+      },
 
   validate() {
     this.$refs.form.validate();
@@ -93,8 +86,6 @@ export default {
   },
   resetValidation() {
     this.$refs.form.resetValidation();
-  },
-};
+  }
+}
 </script>
-
-<style></style>
