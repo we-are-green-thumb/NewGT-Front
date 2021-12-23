@@ -2,7 +2,6 @@
   <div>
     <!-- nav class에 navbar-dark 삭제함 -->
     <nav class="navbar navbar-expand-lg bg-logInNav">
-      <!--div class에 collapse 삭제 -->
       <div class="navbar-collapse" id="navbarColor">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
@@ -20,8 +19,8 @@
               <img src="./assets/images/mypage.png"  width="35" height="33">
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">
+          <li class="nav-item" @click="logout">
+            <a class="nav-link" >
               <img src="./assets/images/logout.png"  width="40" height="33">
             </a>
           </li>
@@ -95,8 +94,20 @@
 </template>
 
 <script>
+
+import {mapActions, mapState} from 'vuex';
+
 export default {
-  component: {},
+  name: "Header",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["isLogin"])
+  },
+  methods : {
+    ...mapActions(["logout"])
+  }
 };
 </script>
 
