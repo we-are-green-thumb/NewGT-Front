@@ -12,7 +12,17 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/signup">
-              <img src="./assets/images/dsBuffe.png"  width="25" height="24">
+              <img src="./assets/images/signup.png"  width="25" height="23">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mypage">
+              <img src="./assets/images/mypage.png"  width="35" height="33">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <img src="./assets/images/logout.png"  width="40" height="33">
             </a>
           </li>
         </ul>
@@ -56,17 +66,17 @@
                 <a class="nav-link" href="#">식물 MBTI</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">식물병원</a>
+                <a class="nav-link" href="/hospital">식물병원</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">식물등록</a>
+                <a class="nav-link"  href="/plantplus">식물등록</a>
               </li>
             </ul>
             <form class="d-flex"> 
               <input
                 class="form-control me-sm-2"
                 type="text"
-                placeholder="식물 이름 검색"
+                placeholder="어떤 식물들이 있을까요?"
               />
               <button class="btn btn-secondary my-2 my-sm-0" type="submit">
                 <img src="./assets/images/natural.png" width="30" height="30" style="filter:invert(100%);">
