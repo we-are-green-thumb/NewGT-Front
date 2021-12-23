@@ -47,7 +47,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">내식물</a>
+                <a class="nav-link" href="/plant">내식물</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/community">커뮤니티</a>

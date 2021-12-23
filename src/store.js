@@ -85,7 +85,7 @@ export default new Vuex.Store({
           })
           .catch((error) => {
             console.log(error);
-            alert("로그인을 실패했어요.");
+            // alert("로그인을 실패했어요.");
           })
           .then(() => {});
       } else {
