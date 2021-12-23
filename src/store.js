@@ -74,13 +74,14 @@ export default new Vuex.Store({
         let id = localStorage.getItem("getId");
 
         http
-          .get("/user/" + id, { headers: { Authorization: `Bearer ${token}` } })
+          .get("/user/" + id, { headers: { authorization: `Bearer ${token}` } })
           .then((response) => {
             console.log(response);
             let userInfo = {
               userId: id,
               email: response.data.email,
             };
+            
             commit("loginSuccess", userInfo);
           })
           .catch((error) => {
@@ -88,27 +89,27 @@ export default new Vuex.Store({
             alert("로그인을 실패했어요.");
           })
           .then(() => {});
+
       } else {
         commit("logouted");
       }
     },
-
     logout({ commit }) {
-      alert("로그아웃 되었습니다.");
+      
       let token = localStorage.getItem("getToken");
       let userId = localStorage.getItem("getId");
       http
         //delete("/auth/logout",  { headers: { Authorization: `Bearer ${token}` }})
         .post("http://localhost:80/auth/logout/" + userId, {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
           console.log(res);
+          alert("로그아웃 되었습니다.");
         })
         .catch((err) => {
           console.log(err);
         });
-
       localStorage.removeItem("getToken");
       localStorage.clear();
       commit("logouted");
