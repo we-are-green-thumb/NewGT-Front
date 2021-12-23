@@ -2,7 +2,6 @@
   <div style="float=center;">
     <table class="table table-hover">
       <tbody>
-
         <tr class="table-light">
           <th scope="row">식물 별명🌱</th>
           <td>
@@ -14,6 +13,7 @@
               >
                 <li>
                   <img
+                    style="width: 550px; border-radius:15px;"
                     src="https://cdn.crowdpic.net/list-thumb/thumb_l_B6E39A23462155430E8E2E6F325CCD98.jpg"
                   />
                 </li>
@@ -47,4 +47,6 @@ export default {
 };
 </script>
 <style>
+
+
 </style>
