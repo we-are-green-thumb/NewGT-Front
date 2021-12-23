@@ -6,13 +6,13 @@
             <router-link :to="{name:'IndexMain'}" style="text-decoration:none; color: black; font-weight: bold">로그아웃&nbsp;&nbsp;
             </router-link>
           </div>
-          <router-link :to="{name:'editpage'}" style="text-decoration:none; color: black; font-weight: bold">마이페이지
+          <router-link :to="{name:'Mypage'}" style="text-decoration:none; color: black; font-weight: bold">마이페이지
           </router-link>
         </section>
         <section v-else>
-          <router-link :to="{name:'loginform'}" style="text-decoration:none; color: black; font-weight: bold">로그인&nbsp;&nbsp;
+          <router-link :to="{name:'Login'}" style="text-decoration:none; color: black; font-weight: bold">로그인&nbsp;&nbsp;
           </router-link>
-          <router-link :to="{name:'register'}" style="text-decoration:none; color: black; font-weight: bold">회원가입
+          <router-link :to="{name:'Signup'}" style="text-decoration:none; color: black; font-weight: bold">회원가입
           </router-link>
         </section>
       </div>
