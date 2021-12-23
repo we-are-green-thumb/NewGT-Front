@@ -10,6 +10,10 @@ import plantplus from "../views/plant/indexplantplus.vue"
 import hospital from "../views/hospital/indexHospital.vue"
 import community from "../views/community/indexCommunity.vue"
 
+const Plantfeeddetail = () => {
+  return import("../components/plant/Plantfeeddetail.vue");
+};
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,9 +43,20 @@ const routes = [
     component: mypage
   },
   {
-    path: '/plant',
-    name: 'plant',
-    component: plant
+    // path: "/myplant/:userId",
+    path: "/plant",
+    name: "plant",
+    component: plant,
+    props: true,
+  },
+
+  {
+    // path: "/myplant/:userId/:plantId",
+    path: "/oneplant",
+    name: "Plantfeeddetail",
+    component: Plantfeeddetail,
+    props: true
+    
   },
   {
     path: '/plantplus',
