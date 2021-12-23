@@ -10,11 +10,11 @@ import plant from "../views/plant/Indexplant.vue"
 import plantplus from "../views/plant/Indexplantplus.vue"
 import hospital from "../views/hospital/IndexHospital.vue"
 import community from "../views/community/IndexCommunity.vue"
+import postdetail from "../components/community/Postdetail.vue"
 
 const Plantfeeddetail = () => {
   return import("../components/plant/Plantfeeddetail.vue");
 };
-
 
 Vue.use(VueRouter)
 
@@ -74,6 +74,11 @@ const routes = [
     path: '/community',
     name: 'community',
     component: community
+  },
+  {
+    path: '/postdetail',
+    name: 'postdetail',
+    component: postdetail
   },
 ]
 
