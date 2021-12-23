@@ -11,12 +11,12 @@ import plantplus from "../views/plant/Indexplantplus.vue"
 import hospital from "../views/hospital/IndexHospital.vue"
 import community from "../views/community/IndexCommunity.vue"
 
+Vue.use(VueRouter);
+
 const Plantfeeddetail = () => {
   return import("../components/plant/Plantfeeddetail.vue");
 };
 
-
-Vue.use(VueRouter)
 
 const routes = [
   {

@@ -1,8 +1,6 @@
 <template>
   <div>
     <div>
-
-    <form @submit="onSubmit">
       <fieldset>
         <legend>
           <img src="../../assets/images/logo.png" width="500" height="100">
@@ -39,7 +37,6 @@
           <br><br>
         </div>
         </fieldset>
-        </form>
       <button class="btn btn-primary" @click="login({email,password})">로그인</button>
     </div>
       <br><br>
