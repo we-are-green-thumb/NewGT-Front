@@ -31,56 +31,19 @@
         </div>
       </div>
     </div>
-
-    <div class="con reply">
-      <div class="form-group">
-        <div class="form-group">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" />
-            <button class="btn btn-primary" type="button" id="button-addon2">
-              댓글 등록
-            </button>
-          </div>
-        </div>
-      </div>
-      <section class="reply-list table-common">
-        <table class="commenttable" border="1">
-          <colgroup>
-            <col width="100px" />
-          </colgroup>
-          <tbody>
-            <tr v-for="(comment, idx) in comments" :key="idx">
-              <td>{{ comment.writer }}</td>
-              <td class="commentd">{{ comment.content }}</td>
-            </tr>
-            <!-- <tr>
-              <td>내용1</td>
-              <td class="commentd">내용2</td>
-            </tr>
-            <tr>
-              <td>내용1</td>
-              <td class="commentd">내용2</td>
-            </tr>
-            <tr>
-              <td>내용1</td>
-              <td class="commentd">내용2</td>
-            </tr>
-            <tr>
-              <td>내용1</td>
-              <td class="commentd">내용2</td>
-            </tr> -->
-          </tbody>
-        </table>
-      </section>
-    </div>
+    <commentlist v-bind:postidx="this.posts"/>
   </div>
 </template>
 <script>
 import http from "@/util/http-common";
 import { mapState } from "vuex";
+import commentlist from "../community/Commentlists.vue";
 
 export default {
   name: "postdetail",
+  components: {
+    commentlist,
+  },
   data() {
     return {
       posts: [],
@@ -140,7 +103,7 @@ export default {
       http
         .post(
           "/post/" +
-            this.postId +
+            this.postid +
             "/user/" +
             this.$store.state.userInfo.userId +
             "/like",
