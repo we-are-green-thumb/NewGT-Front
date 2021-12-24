@@ -112,11 +112,9 @@ export default {
     postUpdate() {
       let userId = localStorage.getItem("getId");
       let token = localStorage.getItem("getToken");
-
       // if(fileUrl == null){
       //     fileUrl = this.myplant.imageUrl
       // }
-
       var data = {
         userId: userId,
         name: this.myplant.name,
@@ -128,7 +126,8 @@ export default {
       http
         .put(
           "user/" +
-            this.$route.params.userId +
+            // this.$route.params.userId +
+            userId+
             "/plant/" +
             this.$route.params.plantId,
           data,
