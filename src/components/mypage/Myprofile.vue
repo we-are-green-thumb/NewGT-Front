@@ -140,7 +140,8 @@ export default {
         .then((res) => {
           console.log(res.data);
            alert("수정완료!");
-          this.$router.go(this.$router.currentRoute)
+          // this.$router.go(this.$router.currentRoute)
+          this.$router.push({path: '/'});
         })
         .catch((err) => {
           console.log(err);
