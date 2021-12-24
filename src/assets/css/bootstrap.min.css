@@ -2841,13 +2841,11 @@ fieldset:disabled .btn {
 }
 .btn-primary {
   color: #fff;
-  background-color: #C5AE6E;
-  border-color: #C5AE6E;
+  background-color: #3fa850;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #64ac61;
-  border-color: #64ac61;
+  background-color: #e28c2a;
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
@@ -4551,7 +4549,10 @@ fieldset:disabled .btn {
 .card-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 0rem 1rem;
+  /* padding: 5%;
+  min-height: 400px;  
+  position: relative;
+  float: center; */
 }
 .card-title {
   margin-bottom: 0.0rem;
@@ -4562,6 +4563,8 @@ fieldset:disabled .btn {
 }
 .card-text:last-child {
   margin-bottom: 0;
+  text-align: left;
+  padding-bottom: 7%;
 }
 .card-link + .card-link {
   margin-left: 1rem;

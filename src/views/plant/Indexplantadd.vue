@@ -16,6 +16,8 @@
       <!-- <label for="staticEmail" class="col-sm-6 col-form-label">마지막으로 물을 언제주셨나요</label> -->
 
           <input class="form-control" type="file"  v-bind="fileList" id="input_img" @change="fileChange"/>
+      <img :src="imageUrl" />
+
         </div>
     <div class="form-group row"  style="text-align:left;">
       <label for="staticEmail" class="col-sm-4 col-form-label" >식물의 종</label>
@@ -37,7 +39,7 @@
       </div>
     </div>
     <p class="mb-3"></p>
-    <button @click="registerPlant()" class="btn btn-primary">Submit</button>
+    <button @click="registerPlant()" class="btn btn-primary">등록</button>
   </fieldset>
 </form>
     </div>
@@ -46,7 +48,6 @@
 
 <script>
 import http from "@/util/http-common";
-import $ from "jquery";
 
 export default {
   name: "Content",
@@ -61,29 +62,23 @@ export default {
     };
   },
   methods: {
-    fileChange() {
-      var file = document.getElementById("input_img");
+    async fileChange() {
+      let file = document.getElementById("input_img");
       var form = new FormData();
       form.append("image", file.files[0]);
-
-      var settings = {
-        url: "https://api.imgbb.com/1/upload?key=076f41cee131349132a08f6320271a31",
-        method: "POST",
-        timeout: 0,
-        processData: false,
-        mimeType: "multipart/form-data",
-        contentType: false,
-        data: form,
-      };
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-        var jx = JSON.parse(response);
-        this.fileUrl = jx.data.url + "";
-        localStorage.setItem("fileUrl", this.fileUrl);
-      });
+      try {
+        const res = await http.post(
+          "https://api.imgbb.com/1/upload?key=076f41cee131349132a08f6320271a31",
+          form
+        );
+        const { data } = res;
+        this.imageUrl = data.data.url;
+      } catch (error) {
+        console.log(error);
+        this.imageUrl = "";
+      }
     },
     registerPlant() {
-      let fileUrl = localStorage.getItem("fileUrl");
       let userId = localStorage.getItem("getId");
       let token = localStorage.getItem("getToken");
       var data = {
@@ -91,7 +86,7 @@ export default {
         nickName: this.nickName,
         water: this.water,
         temp: this.temp,
-        imageUrl: fileUrl,
+        imageUrl: this.imageUrl,
       };
       http
         .post("/user/"+userId+"/plant", data, {
@@ -99,14 +94,15 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          this.$router.go(this.$router.currentRoute, alert("저장완료"));
+          // alert("저장완료")
+          // this.$router.push({name:"IndexMain"});
+          localStorage.removeItem('fileUrl');
         })
         .catch((err) => {
           console.log(err);
+          alert("저장실패")
         })
-        .then(() => {
-          this.$router.go(this.$router.currentRoute, alert("저장완료"));
-          localStorage.removeItem('fileUrl');
-        });
     },
   },
 };

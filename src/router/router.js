@@ -5,19 +5,25 @@ import IndexMain from '../views/main/IndexMain.vue'
 import login from "../views/account/Login.vue"
 import signup from "../views/account/Signup.vue"
 
-import mypage from "../views/mypage/Indexmypage.vue"
+import mypage from "../views/mypage/Indexmypages.vue"
 import plant from "../views/plant/Indexplant.vue"
-import plantplus from "../views/plant/Indexplantplus.vue"
-import hospital from "../views/hospital/IndexHospital.vue"
+import plantadd from "../views/plant/Indexplantadd.vue"
+import hospital from "../views/hospital/IndexHospitals.vue"
 import community from "../views/community/IndexCommunity.vue"
+import postdetail from "../components/community/Postdetail.vue"
 
 Vue.use(VueRouter);
 
 const Plantfeeddetail = () => {
   return import("../components/plant/Plantfeeddetail.vue");
-};
+}
 
-
+const editplant = () => {
+  return import("../components/plant/Editoneplant.vue")
+}
+const postwrite = () => {
+  return import("../components/community/Postwrite.vue")
+}
 const routes = [
   {
     path: '/',
@@ -45,16 +51,19 @@ const routes = [
     component: mypage
   },
   {
-    // path: "/myplant/:userId",
-    path: "/plant",
+    path: "/plant/:userId",
     name: "plant",
     component: plant,
     props: true,
   },
-
   {
-    // path: "/myplant/:userId/:plantId",
-    path: "/oneplant",
+    path: "/editplant/:plantId",
+    name: "editplant",
+    component: editplant,
+    props: true
+  },
+  {
+    path: "/oneplant/:userId/:plantId",
     name: "Plantfeeddetail",
     component: Plantfeeddetail,
     props: true
@@ -63,7 +72,7 @@ const routes = [
   {
     path: '/plantplus',
     name: 'plantplus',
-    component: plantplus
+    component: plantadd
   },
   {
     path: '/hospital',
@@ -75,6 +84,17 @@ const routes = [
     name: 'community',
     component: community
   },
+  {
+    path: '/postdetail/:userId/:postId',
+    name: 'postdetail',
+    component: postdetail,
+    props: true
+  },
+  {
+    path: '/postwrite',
+    name: 'postwrite',
+    component: postwrite,
+  }
 ]
 
 const router = new VueRouter({
