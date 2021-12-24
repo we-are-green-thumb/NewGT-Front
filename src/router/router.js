@@ -6,7 +6,7 @@ import login from "../views/account/Login.vue"
 import signup from "../views/account/Signup.vue"
 
 import mypage from "../views/mypage/Indexmypages.vue"
-import plant from "../views/plant/Indexplant.vue"
+import plant from "../views/plant/Indexplants.vue"
 import plantadd from "../views/plant/Indexplantadd.vue"
 import hospital from "../views/hospital/IndexHospitals.vue"
 import community from "../views/community/IndexCom.vue"
@@ -15,7 +15,7 @@ import postdetail from "../components/community/Postdetails.vue"
 Vue.use(VueRouter);
 
 const Plantfeeddetail = () => {
-  return import("../components/plant/Plantfeeddetail.vue");
+  return import("../components/plant/Plantfeeddetails.vue");
 }
 
 const editplant = () => {
