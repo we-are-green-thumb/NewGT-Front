@@ -5,10 +5,10 @@ import IndexMain from '../views/main/IndexMain.vue'
 import login from "../views/account/Login.vue"
 import signup from "../views/account/Signup.vue"
 
-import mypage from "../views/mypage/Indexmypage.vue"
+import mypage from "../views/mypage/Indexmypages.vue"
 import plant from "../views/plant/Indexplant.vue"
-import plantplus from "../views/plant/Indexplantplus.vue"
-import hospital from "../views/hospital/IndexHospital.vue"
+import plantadd from "../views/plant/Indexplantadd.vue"
+import hospital from "../views/hospital/IndexHospitals.vue"
 import community from "../views/community/IndexCommunity.vue"
 import postdetail from "../components/community/Postdetail.vue"
 
@@ -72,7 +72,7 @@ const routes = [
   {
     path: '/plantplus',
     name: 'plantplus',
-    component: plantplus
+    component: plantadd
   },
   {
     path: '/hospital',
