@@ -47,13 +47,17 @@
       </thead>
       <tbody>
         <tr v-for="(post, i) in posts" :key="i">
-          <th scope="row" class="titletd" @click="moveDetail">
+          <th scope="row" class="titletd" @click="clicketest(post),moveDetail">
             <a>
               <div>
-              <router-link :to="{ name: 'postdetail' ,
-              params:{category: post.category, content: post.content, fileUrl: post.fileUrl, hits: post.hits, postid: post.id, isComplete: post.isComplete, likes: post.like, title: post.title, writer: post.writer, writerId: post.writerId}}">
+              <router-link  :to="{ name: 'postdetail' ,
+              params:{userId:userId, postId: post.id}}">
               {{ post.title }}
             </router-link>
+            <!-- <router-link @click="clicketest(post)" :to="{ name: 'postdetail' ,
+               params:{category: post.category, content: post.content, fileUrl: post.fileUrl, hits: post.hits, postid: post.id, isComplete: post.isComplete, likes: post.like, title: post.title, writer: post.writer, writerId: post.writerId}}">
+              {{ post.title }}
+            </router-link> -->
               </div>
               </a>
           </th>
@@ -76,6 +80,7 @@ export default {
   data() {
     return {
       posts: [],
+      userId : "",
     };
   },
   computed: {
@@ -83,6 +88,8 @@ export default {
     ...mapState(["userInfo"]),
   },
   created() {
+    this.userId = localStorage.getItem('getId');
+    console.log(this.userId);
     let token = localStorage.getItem("getToken");
     http
       .get("/posts/", { headers: { Authorization: `Bearer ${token}` } })
@@ -96,6 +103,29 @@ export default {
       .then(() => {});
   },
   methods: {
+    clicketest(value) {
+      let PostId = value.id;
+      let token = localStorage.getItem("getToken");
+      let hits = value.hits + 1;
+      http
+        .put(
+          "/post/" + PostId,
+          {
+            title: value.title,
+            category: value.category,
+            content: value.content,
+            hits: hits,
+            fileUrl: value.fileUrl,
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        .then((response) => {
+          this.posts = response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     clickFree() {
       let postCategory = "free";
       let token = localStorage.getItem("getToken");

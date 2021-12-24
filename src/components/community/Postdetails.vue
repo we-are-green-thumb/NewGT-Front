@@ -2,24 +2,30 @@
   <div class="contents">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">{{ title }}</h4>
+        <h4 class="card-title">{{ posts.title }}</h4>
         <br />
-        <h6 class="card-subtitle mb-2 text-muted">{{ writer }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ posts.writer }}</h6>
         <div>
-          <span style="float: right">좋아요 {{ likes }} 조회수 {{ hits }}</span>
+          <span style="float: right"
+            >좋아요 {{ posts.like }} 조회수 {{ posts.hits }}</span
+          >
         </div>
         <br /><br />
         <div>
-          <img :src="fileUrl" />
+          <img class="imgSizeA" :src="posts.fileUrl" />
         </div>
         <br />
         <div>
-          <p class="card-text">{{ content }}</p>
+          <p class="card-text">{{ posts.content }}</p>
         </div>
 
         <div class="heart" @click="clickLike">
           <a v-show="yeslike" style="font-size: xx-large; color: green">❤</a>
-          <a v-show="yeslike==false" style="font-size: xx-large; color: lightgrey">❤</a>
+          <a
+            v-show="yeslike == false"
+            style="font-size: xx-large; color: lightgrey"
+            >❤</a
+          >
           <br />
           <br />
         </div>
@@ -43,11 +49,11 @@
             <col width="100px" />
           </colgroup>
           <tbody>
-            <tr>
-              <td>빙봉</td>
-              <td class="commentd">아따 css 어렵구만</td>
+            <tr v-for="(comment, idx) in comments" :key="idx">
+              <td>{{ comment.writer }}</td>
+              <td class="commentd">{{ comment.content }}</td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td>내용1</td>
               <td class="commentd">내용2</td>
             </tr>
@@ -62,7 +68,7 @@
             <tr>
               <td>내용1</td>
               <td class="commentd">내용2</td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </section>
@@ -79,19 +85,12 @@ export default {
     return {
       posts: [],
       yeslike: false,
+      comments: [],
     };
   },
   props: {
-    category: {},
-    content: {},
-    fileUrl: {},
-    hits: {},
-    postid: {},
-    isComplete: {},
-    likes: {},
-    title: {},
-    writer: {},
-    writerId: {},
+    postId: {},
+    userId: {},
   },
   computed: {
     ...mapState(["isLogin"]),
@@ -106,6 +105,22 @@ export default {
   },
   created() {
     let token = localStorage.getItem("getToken");
+    http
+      .get("http://localhost:80/post/" + this.$route.params.postId, {
+        headers: { Authorization: `Bearer ${token}` },
+      }) //게시글을 불러옴.
+      .then((res) => {
+        this.posts = res.data;
+        console.log(this.posts);
+        this.writerId = res.data.writerId;
+        this.logId = localStorage.getItem("getId");
+        if (this.writerId == this.logId) {
+          this.chekcWrite = true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     http
       .get(
         "http://localhost:80/post/" + this.$route.params.postId + "/comments",
@@ -125,7 +140,7 @@ export default {
       http
         .post(
           "/post/" +
-            this.postid+
+            this.postId +
             "/user/" +
             this.$store.state.userInfo.userId +
             "/like",
@@ -136,8 +151,8 @@ export default {
         .then((res) => {
           // console.log(res);
           this.like = res.data;
-          this.yeslike =!this.yeslike;
-          alert(this.like)
+          this.yeslike = !this.yeslike;
+          alert(this.like);
         })
         .catch((err) => {
           console.log(err);
@@ -157,5 +172,12 @@ export default {
 }
 .heart:hover {
   cursor: pointer;
+}
+.imgSizeA {
+  width: 180px;
+  height: 180px;
+  vertical-align: center;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
 }
 </style>
