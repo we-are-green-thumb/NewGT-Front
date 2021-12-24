@@ -31,24 +31,54 @@
         </div>
       </div>
     </div>
-    <commentlist v-bind:postidx="this.posts"/>
+    <!-- <Commentlist :postcomment="posts.id"/> -->
+    <div class="con reply">
+      <div class="form-group">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" v-model="writecomment"/>
+            <button
+              class="btn btn-primary"
+              type="button"
+              @click="createComment"
+            >
+              댓글 등록
+            </button>
+          </div>
+        </div>
+      </div>
+      <section class="reply-list table-common">
+        <table class="commenttable" border="1">
+          <colgroup>
+            <col width="100px" />
+          </colgroup>
+          <tbody v-for="(comment, id) in comments" :key="id">
+            <tr>
+              <td style="float: left">{{ comment.writer }}</td>
+              <td class="commentd">{{ comment.content }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
   </div>
 </template>
 <script>
 import http from "@/util/http-common";
 import { mapState } from "vuex";
-import commentlist from "../community/Commentlists.vue";
+// import Commentlist from "../community/Commentlists.vue";
 
 export default {
   name: "postdetail",
   components: {
-    commentlist,
+    // Commentlist,
   },
   data() {
     return {
       posts: [],
       yeslike: false,
       comments: [],
+      writecomment: "",
     };
   },
   props: {
@@ -69,9 +99,9 @@ export default {
   created() {
     let token = localStorage.getItem("getToken");
     http
-      .get("http://localhost:80/post/" + this.$route.params.postId, {
+      .get("/post/" + this.$route.params.postId, {
         headers: { Authorization: `Bearer ${token}` },
-      }) //게시글을 불러옴.
+      })
       .then((res) => {
         this.posts = res.data;
         console.log(this.posts);
@@ -85,13 +115,12 @@ export default {
         console.log(err);
       });
     http
-      .get(
-        "http://localhost:80/post/" + this.$route.params.postId + "/comments",
-        { headers: { Authorization: `Bearer ${token}` } }
-      ) //댓글을 불러옴.
-      .then((res) => {
-        this.comments = res.data;
-        console.log(this.comments);
+      .get("post/" + this.postId + "/comments", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.comments = response.data;
+        console.log(response.data)
       })
       .catch((err) => {
         console.log(err);
@@ -100,25 +129,40 @@ export default {
   methods: {
     clickLike() {
       let token = localStorage.getItem("getToken");
+      let id = localStorage.getItem("getId");
       http
-        .post(
-          "/post/" +
-            this.postid +
-            "/user/" +
-            this.$store.state.userInfo.userId +
-            "/like",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        )
+        .post("/post/" + this.postId + "/user/" + id + "/like", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           // console.log(res);
           this.like = res.data;
           this.yeslike = !this.yeslike;
           alert(this.like);
+          this.$router.go(this.$router.currentRoute)
         })
         .catch((err) => {
           console.log(err);
+        });
+    },
+    createComment() {
+      let token = localStorage.getItem("getToken");
+      var data = {
+        userId: localStorage.getItem("getId"),
+        content: this.writecomment,
+      };
+      http
+        .post("post/" + this.postId + "/comment", data, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .then(() => {
+          this.$router.go(this.$router.currentRoute)
         });
     },
   },

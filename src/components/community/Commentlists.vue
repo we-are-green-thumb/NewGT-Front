@@ -50,19 +50,23 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      post: [],
       comments: [],
-      props: ["postidx"]
+      props: {
+        postcomment:{
+          
+        }
+      }
     };
   },
   computed: {
     ...mapState(["isLogin"]),
   },
   created() {
-      console.log(this.postidx)
+    console.log("하이");
+    console.log(this.postcomment);
     let token = localStorage.getItem("getToken");
     http
-      .get("/post/" + this.postidx + "/comments", {
+      .get("/post/" + this.postId + "/comments", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
