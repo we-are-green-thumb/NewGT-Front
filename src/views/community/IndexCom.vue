@@ -54,10 +54,6 @@
               params:{userId:userId, postId: post.id}}">
               {{ post.title }}
             </router-link>
-            <!-- <router-link @click="clicketest(post)" :to="{ name: 'postdetail' ,
-               params:{category: post.category, content: post.content, fileUrl: post.fileUrl, hits: post.hits, postid: post.id, isComplete: post.isComplete, likes: post.like, title: post.title, writer: post.writer, writerId: post.writerId}}">
-              {{ post.title }}
-            </router-link> -->
               </div>
               </a>
           </th>
@@ -89,7 +85,6 @@ export default {
   },
   created() {
     this.userId = localStorage.getItem('getId');
-    console.log(this.userId);
     let token = localStorage.getItem("getToken");
     http
       .get("/posts/", { headers: { Authorization: `Bearer ${token}` } })
