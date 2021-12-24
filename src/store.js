@@ -80,6 +80,7 @@ export default new Vuex.Store({
             let userInfo = {
               userId: id,
               email: response.data.email,
+              nickName : response.data.nickName
             };
             
             commit("loginSuccess", userInfo);

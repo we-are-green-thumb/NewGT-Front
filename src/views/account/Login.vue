@@ -6,9 +6,14 @@
           <img src="../../assets/images/logo.png" width="500" height="100">
         </legend>
         <div class="form-group row">
-          <br>
-        <v-img src="https://i.ibb.co/1ZYtvQ8/logo.png" height="100px" width="500px"/>
-          <br>
+          <br />
+          <img
+            src="https://i.ibb.co/1ZYtvQ8/logo.png"
+            height="100px"
+            width="500px"
+          />
+          <br />
+
         </div>
         <div class="form-group">
           <label for="exampleSelect1" class="form-label mt-4" style="float:left;">
