@@ -67,7 +67,8 @@ name: "Hospital",
     },
     //식물 이미지 보내는 rest api
     uploadFile() {
-      this.file = localStorage.getItem("fileUrl");
+      // console.log("uploadFile")
+      // console.log(this.file)
       http
         .post("http://localhost:80/plant-hospital", { imageUrl: this.file })
         .then((res) => {
@@ -82,7 +83,7 @@ name: "Hospital",
 };
 </script>
 <style scoped>
-.imgSize {
+.imgSizeA {
   width: 180px;
   height: 180px;
   vertical-align: center;
