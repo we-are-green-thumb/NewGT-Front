@@ -57,7 +57,7 @@
 
 <script>
 import myprofile from "../../components/mypage/Myprofiles.vue"
-import mypost from "../../components/mypage/Mypost.vue"
+import mypost from "../../components/mypage/Myposts.vue"
 import mycomment from "../../components/mypage/Mycomments.vue"
 
 export default {
