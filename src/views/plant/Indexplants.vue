@@ -6,8 +6,8 @@
   </div>
 </template>
 <script>
-import Myprofile from "../../components/plant/Myprofile.vue";
-import Plantfeed from "../../components/plant/Plantfeed.vue";
+import Myprofile from "../../components/plant/Myprofiles.vue";
+import Plantfeed from "../../components/plant/Plantfeeds.vue";
 export default {
   name: "plant",
   components: {
