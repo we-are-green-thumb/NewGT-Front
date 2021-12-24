@@ -1,53 +1,100 @@
 <template>
     <div>
-        Welcome username <br><br><br>
-<div class="form-group">
-  <fieldset>
-    <input class="form-control" id="readOnlyInput" type="text" placeholder="이메일" readonly="">
-  </fieldset>
-</div>
-<br><br>
+        <div
+      class="btn-group"
+      role="group"
+      aria-label="Basic radio toggle button group"
+    >
+      <input
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="btnradio1"
+        autocomplete="off"
+        checked=""
+        @click="editClick"
+      />
+      <label class="btn btn-outline-primary" for="btnradio1">정보 수정</label>
 
-<div class="form-group">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="닉네임" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-primary" type="submit" id="button-addon2">변경</button>
+      <input
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="btnradio2"
+        autocomplete="off"
+        checked=""
+        @click="postClick"
+
+      />
+      <label class="btn btn-outline-primary" for="btnradio2">내가 쓴 글</label>
+      <input
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="btnradio3"
+        autocomplete="off"
+        checked=""
+        @click="commentClick"
+      />
+      <label class="btn btn-outline-primary" for="btnradio3">내가 쓴 댓글</label>
     </div>
-  </div>
-  <br>
+    <br><br><br>
 
-<div class="form-group">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="프로필" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-primary" type="submit" id="button-addon2">변경</button>
+
+    <div v-if="editFlag">
+    <myprofile/>
     </div>
-  </div>
-  <br>
-
-  <div class="form-group">
-  <fieldset>
-    <input class="form-control" id="readOnlyInput" type="text" placeholder="가입일자" readonly="">
-  </fieldset>
-</div>
-<br><br>
-
-  <div class="form-group">
-  <fieldset>
-    <input class="form-control" id="readOnlyInput" type="text" placeholder="가입경로" readonly="">
-  </fieldset>
-</div>
-<br>
-
-<div class="form-group">
-      <label for="formFile" class="form-label mt-4">프로필 사진</label>
-      <input class="form-control" type="file" id="formFile">
+    <div v-if="postFlag">
+      <mypost/>
     </div>
+
+    <div v-if="commentFlag">
+      <mycomment/>
+    </div>
+
     </div>
 </template>
 
 <script>
+import myprofile from "../../components/mypage/myprofile.vue"
+import mypost from "../../components/mypage/mypost.vue"
+import mycomment from "../../components/mypage/mycomment.vue"
+
 export default {
-  
+  components:{
+    myprofile,
+    mypost,
+    mycomment
+  },
+  data() {
+    return {
+      editFlag :"false",
+      postFlag :"false",
+      commentFlag :"false",
+    }
+  },
+  methods: {
+    editClick(){
+      this.editFlag = true;
+      this.postFlag = false;
+    this.commentFlag = false;
+    },
+    postClick(){
+      this.editFlag = false;
+      this.postFlag = true;
+    this.commentFlag = false
+    },
+    commentClick(){
+ this.editFlag = false;
+      this.postFlag = false;
+    this.commentFlag = true;
+    },
+
+    created() {
+      this.postFlag = false;
+      this.commentFlag = false;
+    },
+  },
     
 }
 </script>

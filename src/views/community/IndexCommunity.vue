@@ -40,7 +40,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col" style="width:60%">제목</th>
+          <th scope="col" style="width:55%">제목</th>
           <th scope="col">작성자</th>
           <th scope="col">좋아요</th>
           <th scope="col">조회수</th>
@@ -48,64 +48,64 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row" class=titletd>&nbsp;&nbsp;Active</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" class=titletd>&nbsp;&nbsp;<a href="postdetail">내식물</a></th>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Default</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Primary</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Secondary</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Success</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Danger</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Warning</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Info</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Light</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
         <tr>
           <th scope="row" class=titletd>&nbsp;&nbsp;Dark</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>삥뽕</td>
+          <td>22</td>
+          <td>222</td>
         </tr>
       </tbody>
     </table>

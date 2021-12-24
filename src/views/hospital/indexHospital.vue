@@ -14,6 +14,10 @@
 
           <div class="resultform">
         <ul>
+          <div>
+              <img class="imgSizeA" :src="this.file" width="60%"/>
+            </div>
+            
             <div>
               <img class="imgSizeA" :src="this.file" width="60%"/>
             </div>
@@ -66,6 +70,7 @@ name: "Hospital",
         var jx = JSON.parse(response);
         this.fileUrl = jx.data.url + "";
         localStorage.setItem("fileUrl", this.fileUrl);
+        this.file = localStorage.getItem("fileUrl");
       });
     },
     //식물 이미지 보내는 rest api
