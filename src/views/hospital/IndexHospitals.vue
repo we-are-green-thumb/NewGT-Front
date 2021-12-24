@@ -18,7 +18,7 @@
             </div>
             
             <div>
-              <img class="imgSizeA" :src="this.file" width="60%" height="30%" />
+              <img class="imgSizeA" :src="this.file" />
             </div>
             <div>
               <h3>당신의 식물은 {{ Hospital.disease }}</h3>
@@ -81,4 +81,13 @@ name: "Hospital",
   },
 };
 </script>
-<style></style>
+<style scoped>
+.imgSize {
+  width: 180px;
+  height: 180px;
+  vertical-align: center;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
+}
+
+</style>
