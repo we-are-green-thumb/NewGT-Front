@@ -26,7 +26,8 @@ export default {
      let userId = localStorage.getItem('getId');
      console.log(userId)
         http
-      .get("http://localhost/user/1/comments") //댓글을 불러옴.
+    //   .get("http://localhost/user/"+userId+"/comments") //댓글을 불러옴.
+      .get("http://localhost/user/"+userId+"/comments") //댓글을 불러옴.
       .then((res) => {
         this.comments = res.data.data;
         console.log(this.comments);
