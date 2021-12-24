@@ -21,7 +21,9 @@ const Plantfeeddetail = () => {
 const editplant = () => {
   return import("../components/plant/Editoneplant.vue")
 }
-
+const postwrite = () => {
+  return import("../components/community/Postwrite.vue")
+}
 const routes = [
   {
     path: '/',
@@ -83,10 +85,16 @@ const routes = [
     component: community
   },
   {
-    path: '/postdetail',
+    path: '/postdetail/:userId/:postId',
     name: 'postdetail',
-    component: postdetail
+    component: postdetail,
+    props: true
   },
+  {
+    path: '/postwrite',
+    name: 'postwrite',
+    component: postwrite,
+  }
 ]
 
 const router = new VueRouter({

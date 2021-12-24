@@ -56,9 +56,9 @@
 </template>
 
 <script>
-import myprofile from "../../components/mypage/myprofile.vue"
-import mypost from "../../components/mypage/mypost.vue"
-import mycomment from "../../components/mypage/mycomment.vue"
+import myprofile from "../../components/mypage/Myprofile.vue"
+import mypost from "../../components/mypage/Mypost.vue"
+import mycomment from "../../components/mypage/Mycomment.vue"
 
 export default {
   components:{
