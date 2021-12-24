@@ -25,7 +25,7 @@
       <div
         class="card border-primary mb-3"
         style="max-width: 20rem; border: none"
-        v-for="(u, i) in filterData.slice(0, 15)"
+        v-for="(u, i) in filterData"
         :key="i"
       >
         <router-link
