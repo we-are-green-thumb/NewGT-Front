@@ -15,7 +15,11 @@ Vue.use(VueRouter);
 
 const Plantfeeddetail = () => {
   return import("../components/plant/Plantfeeddetail.vue");
-};
+}
+
+const editplant = () => {
+  return import("../components/plant/Editoneplant.vue")
+}
 
 
 const routes = [
@@ -45,13 +49,17 @@ const routes = [
     component: mypage
   },
   {
-    // path: "/myplant/:userId",
     path: "/plant/:userId",
     name: "plant",
     component: plant,
     props: true,
   },
-
+  {
+    path: "/editplant/:plantId",
+    name: "editplant",
+    component: editplant,
+    props: true
+  },
   {
     path: "/oneplant/:userId/:plantId",
     name: "Plantfeeddetail",

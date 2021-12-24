@@ -6,7 +6,7 @@
         </legend>
         <div class="form-group row">
           <br />
-          <v-img
+          <img
             src="https://i.ibb.co/1ZYtvQ8/logo.png"
             height="100px"
             width="500px"
