@@ -5,7 +5,7 @@
       <div class="navbar-collapse" id="navbarColor">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/auth/login">
+            <a class="nav-link" href="/login">
               <img src="./assets/images/user.png"  width="30" height="30">
             </a>
           </li>
@@ -62,7 +62,7 @@
                 <a class="nav-link" href="/community">커뮤니티</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">식물 MBTI</a>
+                <a class="nav-link" href="https://similarplant.netlify.app/">식물 MBTI</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/hospital">식물병원</a>

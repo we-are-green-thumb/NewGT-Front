@@ -1,4 +1,5 @@
 <template>
+<div>
   <div style="text-align: center">
     <a
       href="http://localhost:80/oauth2/authorization/kakao?redirect_uri=http://localhost:8081/login/oauth2/code/kakao"
@@ -7,7 +8,7 @@
       <i class="fas fa-comment"></i> 카카오로 로그인
     </a>
     <a
-      href="http://localhost:80/oauth2/authorization/google?redirect_uri=http://localhost:8081/login/oauth2/code/google"
+      href="http://localhost:80/oauth2/authorization/google?redirect_uri=http://localhost/login/oauth2/code/google"
       class="google btn"
       ><i class="fab fa-google"></i> 구글로 로그인
     </a>
@@ -16,6 +17,7 @@
       class="naver btn"
       ><i class="fab fa-google"></i> 네이버로 로그인
     </a>
+  </div>
   </div>
 </template>
 

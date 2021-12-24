@@ -1,13 +1,11 @@
 <template>
   <div>
-    <v-form v-model="form">
+    <form>
       <fieldset>
         <legend>
           <img src="../../assets/images/logo.png" width="500" height="100">
         </legend>
         <div class="form-group row">
-          <br>
-        <v-img src="https://i.ibb.co/1ZYtvQ8/logo.png" height="100px" width="500px"/>
           <br>
         </div>
         <div class="form-group">
@@ -52,19 +50,19 @@
         <button type="submit" class="btn btn-primary" 
         @click="submitForm">회원가입</button>
       </fieldset>
-    </v-form>
+    </form>
+
+    <OAuth2Signup/>
   </div>
 </template>
 
 <script>
-// import OAuth2Login from '../../components/account/OAuth2Login.vue';
+import OAuth2Signup from '../../components/account/OAuth2Signup.vue';
 import http from "@/util/http-common";
 export default {
-  // components : {
-  //   OAuth2Login
-  // },
-  name: "signup",
-
+  components : {
+    OAuth2Signup
+  },
   data () {
     return {
     agreement: false,
