@@ -24,6 +24,9 @@ const editplant = () => {
 const postwrite = () => {
   return import("../components/community/Postwrite.vue")
 }
+
+
+
 const routes = [
   {
     path: '/',
@@ -94,7 +97,8 @@ const routes = [
     path: '/postwrite',
     name: 'postwrite',
     component: postwrite,
-  }
+  },
+
 ]
 
 const router = new VueRouter({

@@ -10,10 +10,18 @@
         "
       >
         <div class="d-flex w-100 justify-content-between">
-          <h4 class="mb-1">{{User.nickName}}</h4>
-          <ul v-show="canFollow">
-            <li><button class="btn btn-light" @click="followerupdate" >팔로우 하기</button></li>
-            <li><button class="btn btn-light" @click="followerdelete"> 팔로우 취소</button></li>
+          <h4 class="mb-1">{{ User.nickName }}</h4>
+          <ul v-show="checkSelf">
+            <li v-if="canFollow">
+              <button  class="btn btn-light" @click="followerupdate">
+                팔로우 하기
+              </button>
+            </li>
+            <li v-else>
+              <button  class="btn btn-light" @click="followerdelete">
+                팔로우 취소
+              </button>
+            </li>
           </ul>
         </div>
       </span>
@@ -29,31 +37,55 @@
           <h6 class="mb-1"></h6>
           <ul>
             <li>
-              <a href="" class="text-muted">팔로우수: {{User.followeeCount}}</a>
+              <button @click="showModal = true" class="text-muted">
+                팔로우수: {{ User.followeeCount }}
+              </button>
               &nbsp;&nbsp;
-              <a href="" class="text-muted">팔로잉 수: {{User.followerCount}}</a>
+              <button @click="showfollowing=true" class="text-muted">
+                팔로잉 수: {{ User.followerCount }}
+              </button>
             </li>
           </ul>
         </div>
         <p class="mb-1" style="text-align: left">
-          {{User.profile}}
+          {{ User.profile }}
         </p>
       </span>
+     
     </div>
+     <!-- 팔로우 모달창 -->
+    <div >
+      <modal :feedowner="User.userId" v-if="showModal" @close="showModal = false">
+        <h4 slot="follower">팔로워 리스트</h4>
+      </modal>
+            <following :feedowner="User.userId" v-if="showfollowing" @close="showfollowing = false">
+        <h4 slot="follower">팔로잉 리스트</h4>
+      </following>
+    </div>
+
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
 import http from "@/util/http-common";
+import modal from "../../components/modal/modal.vue";
+import following from "../../components/modal/follower.vue"
 
 export default {
   name: "Myprofile",
-
+  components: {
+    modal,
+    following,
+  },
   data() {
     return {
       myplants: [],
       User: [],
       canFollow: true,
+      checkSelf: false,
+      showModal:false,
+      showfollowing:false
+      
     };
   },
   props: {
@@ -64,7 +96,6 @@ export default {
     ...mapState(["myplant"]),
     ...mapState(["userInfo"]),
   },
-  components: {},
   watch: {
     $route(to, from) {
       if (to.path != from.path) {
@@ -81,6 +112,7 @@ export default {
       })
       .then((response) => {
         this.User = response.data;
+        console.log(this.User)
       })
       .catch((err) => {
         console.log(err);
@@ -88,9 +120,9 @@ export default {
       .then(() => {});
 
     if (id === this.$route.params.userId) {
-      this.canFollow = false
+      this.checkSelf = false;
     } else {
-      this.canFollow = true
+      this.checkSelf = true;
     }
   },
   methods: {
@@ -114,7 +146,8 @@ export default {
           console.log(err);
         })
         .then(() => {
-          this.$router.go(this.$router.currentRoute);
+          this.canFollow =!this.canFollow
+          // this.$router.go(this.$router.currentRoute);
         });
     },
     followerdelete() {

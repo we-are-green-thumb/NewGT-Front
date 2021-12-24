@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/plant">내식물</a>
+                <router-link  :to="{ name: 'plant', params: { userId: userId} }" class="nav-link">내식물</router-link>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/community">커뮤니티</a>
@@ -100,10 +100,13 @@ import {mapActions, mapState} from 'vuex';
 export default {
   name: "Header",
   data() {
-    return {};
+    return {
+      userId: localStorage.getItem("getId"),
+    };
   },
   computed: {
-    ...mapState(["isLogin"])
+    ...mapState(["isLogin"]),
+    ...mapState(["userInfo"])
   },
   methods : {
     ...mapActions(["logout"])

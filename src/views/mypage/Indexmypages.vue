@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div
+  <div>
+    <div
       class="btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
@@ -24,7 +24,6 @@
         autocomplete="off"
         checked=""
         @click="postClick"
-
       />
       <label class="btn btn-outline-primary" for="btnradio2">내가 쓴 글</label>
       <input
@@ -36,58 +35,58 @@
         checked=""
         @click="commentClick"
       />
-      <label class="btn btn-outline-primary" for="btnradio3">내가 쓴 댓글</label>
+      <label class="btn btn-outline-primary" for="btnradio3"
+        >내가 쓴 댓글</label
+      >
     </div>
-    <br><br><br>
-
+    <br /><br /><br />
 
     <div v-if="editFlag">
-    <myprofile/>
+      <myprofile />
     </div>
     <div v-if="postFlag">
-      <mypost/>
+      <mypost />
     </div>
 
     <div v-if="commentFlag">
-      <mycomment/>
+      <mycomment />
     </div>
-
-    </div>
+  </div>
 </template>
 
 <script>
-import myprofile from "../../components/mypage/Myprofiles.vue"
-import mypost from "../../components/mypage/Myposts.vue"
-import mycomment from "../../components/mypage/Mycomments.vue"
+import myprofile from "../../components/mypage/Myprofiles.vue";
+import mypost from "../../components/mypage/Myposts.vue";
+import mycomment from "../../components/mypage/Mycomments.vue";
 
 export default {
-  components:{
+  components: {
     myprofile,
     mypost,
-    mycomment
+    mycomment,
   },
   data() {
     return {
-      editFlag :false,
-      postFlag :false,
-      commentFlag :false,
-    }
+      editFlag: false,
+      postFlag: false,
+      commentFlag: false,
+    };
   },
   methods: {
-    editClick(){
+    editClick() {
       this.editFlag = true;
       this.postFlag = false;
-    this.commentFlag = false;
+      this.commentFlag = false;
     },
-    postClick(){
+    postClick() {
       this.editFlag = false;
       this.postFlag = true;
-    this.commentFlag = false
+      this.commentFlag = false;
     },
-    commentClick(){
- this.editFlag = false;
+    commentClick() {
+      this.editFlag = false;
       this.postFlag = false;
-    this.commentFlag = true;
+      this.commentFlag = true;
     },
 
     created() {
@@ -95,10 +94,8 @@ export default {
       this.commentFlag = false;
     },
   },
-    
-}
+};
 </script>
 
 <style>
-    
 </style>

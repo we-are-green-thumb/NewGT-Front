@@ -8,25 +8,33 @@
           <label for="formFile" class="form-label mt-4"
             >식물을 진단합니다</label
           >
-          <input class="form-control" type="file" id="input_img" accept="image/*" v-bind="fileList"  @change="fileChange"/>
-        
-          <button type="button" class="btn btn-primary"  @click="uploadFile" >Submit</button>
+          <input
+            class="form-control"
+            type="file"
+            id="input_img"
+            accept="image/*"
+            v-bind="fileList"
+            @change="fileChange"
+          />
+
+          <button type="button" class="btn btn-primary" @click="uploadFile">
+            Submit
+          </button>
 
           <div class="resultform">
-        <ul>
-          <div>
-            </div>
-            
-            <div>
-              <img class="imgSizeA" :src="this.file" />
-            </div>
-            <div>
-              <h3>당신의 식물은 {{ Hospital.disease }}</h3>
-              을 앓고 있습니다.
-              <p>{{ Hospital.content }}</p>
-            </div>
-        </ul>
-      </div>
+            <ul>
+              <div></div>
+
+              <div>
+                <img class="imgSizeA" :src="this.file" />
+              </div>
+              <div>
+                <h3>당신의 식물은 {{ Hospital.disease }}</h3>
+                을 앓고 있습니다.
+                <p>{{ Hospital.content }}</p>
+              </div>
+            </ul>
+          </div>
         </div>
       </fieldset>
     </form>
@@ -38,7 +46,7 @@
 import http from "@/util/http-common";
 
 export default {
-name: "Hospital",
+  name: "Hospital",
   data() {
     return {
       fileList: [],
@@ -49,7 +57,7 @@ name: "Hospital",
 
   methods: {
     //식물 이미지 링크 받아오는 api
-   async fileChange() {
+    async fileChange() {
       let file = document.getElementById("input_img");
       var form = new FormData();
       form.append("image", file.files[0]);
@@ -78,6 +86,18 @@ name: "Hospital",
         })
         .then(() => {});
     },
+    // async getAnswer() {
+    //   const filesurls = this.file;
+    //   //(2)vuex의 스토어에 저장해둔 dataId를 가져온다.
+    //   const { data } = await checkId(dataId);
+    //   //(3)async await로 checkId API 호출.
+    //   if (data.status == "done") {
+    //     //(4)해당 status 값이 done이면 아래 코드 실행
+    //     clearInterval(this.loading);
+    //     //(5)clearInterval()에 setInterval에서 반환한 인스턴스를 넣는다.
+    //     this.status = data.status;
+    //   }
+    // },
   },
 };
 </script>
@@ -89,5 +109,4 @@ name: "Hospital",
   padding: 10px 10px 10px 10px;
   border-radius: 15px;
 }
-
 </style>
