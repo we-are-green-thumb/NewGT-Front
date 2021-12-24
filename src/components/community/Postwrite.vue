@@ -27,7 +27,6 @@
 </template>
 <script>
 import http from "@/util/http-common";
-import $ from "jquery";
 
 export default {
   name: "postwrite",
@@ -43,37 +42,31 @@ export default {
     this.userId = localStorage.getItem("getId");
   },
   methods: {
-    fileChange() {
-      var file = document.getElementById("input_img");
+    async fileChange() {
+      let file = document.getElementById("input_img");
       var form = new FormData();
       form.append("image", file.files[0]);
-
-      var settings = {
-        url: "https://api.imgbb.com/1/upload?key=076f41cee131349132a08f6320271a31",
-        method: "POST",
-        timeout: 0,
-        processData: false,
-        mimeType: "multipart/form-data",
-        contentType: false,
-        data: form,
-      };
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-        var jx = JSON.parse(response);
-        this.fileUrl = jx.data.url + "";
-        localStorage.setItem("fileUrl", this.fileUrl);
-      });
+      try {
+        const res = await http.post(
+          "https://api.imgbb.com/1/upload?key=076f41cee131349132a08f6320271a31",
+          form
+        );
+        const { data } = res;
+        this.fileUrl = data.data.url;
+      } catch (error) {
+        console.log(error);
+        this.fileUrl = "";
+      }
     },
 
     addPost() {
       let token = localStorage.getItem("getToken");
       let userId = localStorage.getItem("getId");
-      let fileUrl = localStorage.getItem("fileUrl");
       let data = {
         title: this.title,
         category: this.cate,
         content: this.content,
-        fileUrl: fileUrl + "",
+        fileUrl: this.fileUrl,
       };
       http
         .post(

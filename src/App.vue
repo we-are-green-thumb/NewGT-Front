@@ -3,25 +3,27 @@
     <!-- nav class에 navbar-dark 삭제함 -->
     <nav class="navbar navbar-expand-lg bg-logInNav">
       <div class="navbar-collapse" id="navbarColor">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto" v-if="isLogin == false">
           <li class="nav-item">
             <a class="nav-link" href="/auth/login">
-              <img src="./assets/images/user.png"  width="30" height="30">
+              <img src="./assets/images/user.png" width="30" height="30" />
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/signup">
-              <img src="./assets/images/signup.png"  width="25" height="23">
+              <img src="./assets/images/signup.png" width="25" height="23" />
             </a>
           </li>
+        </ul>
+        <ul class="navbar-nav me-auto" v-else>
           <li class="nav-item">
             <a class="nav-link" href="/mypage">
-              <img src="./assets/images/mypage.png"  width="35" height="33">
+              <img src="./assets/images/mypage.png" width="35" height="33" />
             </a>
           </li>
           <li class="nav-item" @click="logout">
-            <a class="nav-link" >
-              <img src="./assets/images/logout.png"  width="40" height="33">
+            <a class="nav-link">
+              <img src="./assets/images/logout.png" width="40" height="33" />
             </a>
           </li>
         </ul>
@@ -67,50 +69,62 @@
               <li class="nav-item">
                 <a class="nav-link" href="/hospital">식물병원</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link"  href="/plantplus">식물등록</a>
+              <li class="nav-item" v-if="isLogin">
+                <a class="nav-link" href="/plantplus">
+                식물등록
+                </a>
               </li>
             </ul>
-            <form class="d-flex"> 
+            <form class="d-flex">
               <input
                 class="form-control me-sm-2"
                 type="text"
                 placeholder="어떤 식물들이 있을까요?"
+                v-model="search"
               />
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                <img src="./assets/images/natural.png" width="30" height="30" style="filter:invert(100%);">
+              <button class="btn btn-secondary my-2 my-sm-0"  @click="searchNaver">
+                <img
+                  src="./assets/images/natural.png"
+                  width="30"
+                  height="30"
+                  style="filter: invert(100%)"
+                />
               </button>
             </form>
           </div>
         </div>
       </nav>
-      <br><br>
+      <br /><br />
       <div class="body">
-        <br>
-      <router-view />
+        <br />
+        <router-view />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
-import {mapActions, mapState} from 'vuex';
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Header",
   data() {
     return {
       userId: localStorage.getItem("getId"),
+      search: "",
     };
   },
   computed: {
     ...mapState(["isLogin"]),
     ...mapState(["userInfo"])
+
   },
-  methods : {
-    ...mapActions(["logout"])
-  }
+  methods: {
+    ...mapActions(["logout"]),
+    searchNaver(){
+      window.open("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="+this.search)
+    }
+  },
 };
 </script>
 
@@ -133,16 +147,15 @@ export default {
 }
 
 .body {
-    width: 70%;
-    min-height: 800px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: white;
-    border: 1px solid burlywood;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    word-break: break-all;
+  width: 70%;
+  min-height: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
+  border: 1px solid burlywood;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-break: break-all;
 }
-
 </style>

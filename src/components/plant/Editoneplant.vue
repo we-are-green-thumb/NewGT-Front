@@ -61,7 +61,6 @@
 <script>
 import { mapState } from "vuex";
 import http from "@/util/http-common";
-import $ from "jquery";
 
 export default {
   name: "editplant",
@@ -94,48 +93,41 @@ export default {
       .then(() => {});
   },
   methods: {
-    fileChange() {
-      var file = document.getElementById("input_img");
+    async fileChange() {
+      let file = document.getElementById("input_img");
       var form = new FormData();
       form.append("image", file.files[0]);
-
-      var settings = {
-        url: "https://api.imgbb.com/1/upload?key=076f41cee131349132a08f6320271a31",
-        method: "POST",
-        timeout: 0,
-        processData: false,
-        mimeType: "multipart/form-data",
-        contentType: false,
-        data: form,
-      };
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-        var jx = JSON.parse(response);
-        this.fileUrl = jx.data.url + "";
-        localStorage.setItem("fileUrl", this.fileUrl);
-      });
+      try {
+        const res = await http.post(
+          "https://api.imgbb.com/1/upload?key=076f41cee131349132a08f6320271a31",
+          form
+        );
+        const { data } = res;
+        this.myplant.imageUrl = data.data.url;
+      } catch (error) {
+        console.log(error);
+        this.myplant.imageUrl = "";
+      }
     },
     postUpdate() {
-      let fileUrl = localStorage.getItem("fileUrl");
       let userId = localStorage.getItem("getId");
       let token = localStorage.getItem("getToken");
-
-      if(fileUrl == null){
-          fileUrl = this.myplant.imageUrl
-      }
-
+      // if(fileUrl == null){
+      //     fileUrl = this.myplant.imageUrl
+      // }
       var data = {
         userId: userId,
         name: this.myplant.name,
         nickName: this.myplant.nickName,
         water: this.myplant.water,
         temp: this.myplant.temp,
-        imageUrl: fileUrl,
+        imageUrl: this.myplant.imageUrl,
       };
       http
         .put(
           "user/" +
-            this.$route.params.userId +
+            // this.$route.params.userId +
+            userId+
             "/plant/" +
             this.$route.params.plantId,
           data,
