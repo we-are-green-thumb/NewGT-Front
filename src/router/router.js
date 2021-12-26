@@ -24,6 +24,9 @@ const editplant = () => {
 const postwrite = () => {
   return import("../components/community/Postwrite.vue")
 }
+const postupdate = () => {
+  return import("../components/community/Postupdates.vue")
+}
 
 
 
@@ -97,6 +100,11 @@ const routes = [
     path: '/postwrite',
     name: 'postwrite',
     component: postwrite,
+  },
+  {
+    path: '/postupdate/:postId',
+    name: 'postupdate',
+    component: postupdate,
   },
 
 ]
