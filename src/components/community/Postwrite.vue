@@ -1,42 +1,61 @@
 <template>
   <div class="contents">
     <div class="form-group">
-      <select class="form-select" v-model="cate">
-        <option value="free">자유</option>
-        <option value="QnA">질문</option>
-        <option value="share">나눔거래</option>
-        <option value="share">카테고리를 선택해주세요</option>
-      </select>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control-plaintext"
+                id="staticEmail"
+                v-model="title"
+                placeholder="제목을 입력해주세요."
+              />
+            </div>
+          </h4>
 
-      <h4 class="card-title">
-        <div class="col-sm-10">
+          <select class="form-select" v-model="cate">
+            <option value="QnA">질문</option>
+            <option value="free">자유</option>
+            <option value="share">나눔거래</option>
+          </select>
+
+          <br>
+
           <input
-            type="text"
-            class="form-control-plaintext"
-            id="staticEmail"
-            v-model="title"
-            placeholder="제목을 입력해주세요."
+            class="form-control"
+            v-bind="fileList"
+            id="input_img"
+            type="file"
+            accept="image/*"
+            multiple
+            @change="fileChange"
           />
-        </div>
-      </h4>
 
-      <input
-        class="form-control"
-        v-bind="fileList"
-        id="input_img"
-        type="file"
-        accept="image/*"
-        multiple
-        @change="fileChange"
-      />
-      <!-- <textarea class="form-control" rows="3" v-model="title"></textarea> -->
-      <textarea
-        class="pu-form-control"
-        id="exampleTextarea"
-        rows="10"
-        v-model="content"
-      ></textarea>
-      <button @click="addPost" class="btn btn-primary">완료</button>
+          <br />
+          <div class="form-group">
+            <textarea
+              class="pu-form-control"
+              id="exampleTextarea"
+              rows="10"
+              v-model="content"
+              placeholder="내용을 입력해주세요."
+            ></textarea>
+          </div>
+          <br><br>
+          <div class="pubutton">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              @click="addPost"
+            >
+              저장하기
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
     </div>
   </div>
 </template>
@@ -115,5 +134,18 @@ export default {
   min-width: 800px;
   position: relative;
   float: center;
+}
+
+.form-control-plaintext {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #888;
+  background-color: transparent;
+  border: solid transparent;
+  border-width: 1px 0;
 }
 </style>
