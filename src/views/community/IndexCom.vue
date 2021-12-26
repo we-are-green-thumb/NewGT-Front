@@ -46,16 +46,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(post, i) in posts" :key="i">
-          <th scope="row" class="titletd" @click="clicketest(post),moveDetail">
+        <tr v-for="(post, i) in paginatedData" :key="i">
+          <th scope="row" class="titletd" @click="clicketest(post), moveDetail">
             <a>
               <div>
-              <router-link  :to="{ name: 'postdetail' ,
-              params:{userId:userId, postId: post.id}}">
-              {{ post.title }}
-            </router-link>
+                <router-link
+                  :to="{
+                    name: 'postdetail',
+                    params: { userId: userId, postId: post.id },
+                  }"
+                  style="color:#434d47; text-decoration:none;"
+                >
+                  {{ post.title }}
+                </router-link>
               </div>
-              </a>
+            </a>
           </th>
           <td>{{ post.writer }}</td>
           <td>{{ post.like }}</td>
@@ -63,6 +68,25 @@
         </tr>
       </tbody>
     </table>
+    <div class="btn-cover">
+      <button
+        :disabled="pageNum === 0"
+        @click="prevPage"
+        class="btn btn-outline-primary"
+      >
+        이전
+      </button>
+      &nbsp;
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+      &nbsp;
+      <button
+        :disabled="pageNum >= pageCount - 1"
+        @click="nextPage"
+        class="btn btn-outline-primary"
+      >
+        다음
+      </button>
+    </div>
   </div>
 </template>
 
@@ -76,15 +100,29 @@ export default {
   data() {
     return {
       posts: [],
-      userId : "",
+      userId: "",
+      pageNum: 0,
     };
   },
   computed: {
     ...mapState(["isLogin"]),
     ...mapState(["userInfo"]),
+    pageCount() {
+      let listLeng = this.posts.length,
+        listSize = this.pageSize,
+        page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+
+      return page;
+    },
+    paginatedData() {
+      const start = this.pageNum * this.pageSize,
+        end = start + this.pageSize;
+      return this.posts.slice(start, end);
+    },
   },
   created() {
-    this.userId = localStorage.getItem('getId');
+    this.userId = localStorage.getItem("getId");
     let token = localStorage.getItem("getToken");
     http
       .get("/posts/", { headers: { Authorization: `Bearer ${token}` } })
@@ -96,6 +134,17 @@ export default {
         console.log(err);
       })
       .then(() => {});
+  },
+  props: {
+    listArray: {
+      type: Array,
+      required: true,
+    },
+    pageSize: {
+      type: Number,
+      required: false,
+      default: 11,
+    },
   },
   methods: {
     clicketest(value) {
@@ -120,6 +169,12 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    nextPage() {
+      this.pageNum += 1;
+    },
+    prevPage() {
+      this.pageNum -= 1;
     },
     clickFree() {
       let postCategory = "free";
@@ -168,36 +223,9 @@ export default {
           console.log(err);
         });
     },
-    moveDetail() {
-      // let token = localStorage.getItem("getToken");
-
-      // http
-      //   .put(
-      //     "/post/" + this.posts.postId,
-      //     {
-      //       title: this.posts.title,
-      //       category: this.posts.category,
-      //       content: this.posts.content,
-      //       fileUrl: this.posts.fileUrl,
-      //       hits: this.posts.hits,
-      //     },
-      //     { headers: { Authorization: `Bearer ${token}` } }
-      //   )
-      //   .then((response) => {
-      //     this.posts = response.data;
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-
-      // this.$router.push({
-      //   name: "postdetail",
-      //   params: { userId: this.$store.state.userInfo.userId, postId: this.posts.postId },
-      // });
-    },
+    moveDetail() {},
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
