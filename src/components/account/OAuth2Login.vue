@@ -1,52 +1,48 @@
 <template>
-  <div style="text-align: center">
-    <a
-      href="http://localhost:80/oauth2/authorization/kakao?redirect_uri=http://localhost:8081/login/oauth2/code/kakao"
-      class="kakao btn"
-    >
-      <i class="fas fa-comment"></i> 카카오로 로그인
-    </a>
-    <a
-      href="http://localhost:80/oauth2/authorization/google?redirect_uri=http://localhost:8081/login/oauth2/code/google"
-      class="google btn"
-      ><i class="fab fa-google"></i> 구글로 로그인
-    </a>
-    <a
-      href="http://localhost:80/oauth2/authorization/naver?redirect_uri=http://localhost:8081/login/oauth2/code/naver"
-      class="naver btn"
-      ><i class="fab fa-google"></i> 네이버로 로그인
-    </a>
-  </div>
+  <div style="text-align: center;">
+      <a href="http://localhost:80/oauth2/authorization/kakao?redirect_uri=http://localhost:8081/login/oauth2/code/kakao" class="btn"><img src="../../assets/images/kakaoLogin.png" width="260" height="60">
+        </a>
+      <a href="http://localhost:80/oauth2/authorization/google?redirect_uri=http://localhost:8081/login/oauth2/code/google" class="btn"><img src="../../assets/images/googleSignup.png" width="280">
+      </a>
+      <a href="http://localhost:80/oauth2/authorization/naver?redirect_uri=http://localhost:8081/login/oauth2/code/naver" class="btn"><img src="../../assets/images/naverLogin.png" width="270">
+      </a>
+    </div>
 </template>
 
 <script>
-import http from "@/util/http-common";
-
 window.onload = function () {
   var getToken = document.location.href.split("/?token=");
   if (getToken[0] == "http://localhost:8081") {
-    console.log(getToken);
     localStorage.setItem("getTk", getToken[1]);
-    let gt = localStorage.getItem("getTk");
-    http
-      .post("/auth/login", { headers: { Authorization: `Bearer ${gt}` } })
-      .then((res) => {
-        let token = res.data.accessToken;
-        let id = res.data.id;
-        // let Bearer = res.data.tokenType;
-
-        //일단 토큰 저장함
-        localStorage.setItem("getToken", token);
-        localStorage.setItem("getId", id);
-        // localStorage.setItem("getB", Bearer);
-
-        this.router.push({ name: "IndexMain" });
-        localStorage.removeItem("getTk");
-      });
-  }
+    }
 };
 
 export default {};
+
+// import { mapMutations, mapActions } from 'vuex'
+
+// export default {
+//   created () {
+//     // 컴포넌트 렌더링이 되었을 때,
+
+//     // 쿼리스트링으로부터 토큰을 획득
+//     const token = this.$route.query.token
+//     console.log('token', token)
+
+//     // 토큰이 존재하는 경우, Vuex Store에 토큰을 저장한다.
+//     if (token) {
+//       this.setToken(token)
+//       this.fetchUser()
+//     }
+
+//     // 토큰이 있던 없던, 루트 페이지로 이동한다.
+//     this.$router.replace('/')
+//   },
+//   methods: {
+//     ...mapActions(['fetchUser']),
+//     ...mapMutations(['setToken'])
+//   }
+// }
 </script>
 
 <style scoped>
@@ -62,16 +58,16 @@ input,
   width: 700px;
   padding: 12px;
   border: none;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   margin: 5px 0;
-  opacity: 0.85;
+  /* opacity: 0.85; */
   display: inline-block;
   font-size: 17px;
-  line-height: 20px;
+  /* line-height: 20px; */
   text-decoration: none; /* remove underline from anchors */
 }
 .google {
-  background-color: #3d3130;
+  background-color: white;
   color: white;
 }
 

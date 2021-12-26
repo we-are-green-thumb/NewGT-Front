@@ -52,17 +52,21 @@
         <button type="submit" class="btn btn-primary" 
         @click="submitForm">회원가입</button>
       </fieldset>
+      <br><br>
+      <section>
+      <OAuth2Signup/>
+      </section>
     </v-form>
   </div>
 </template>
 
 <script>
-// import OAuth2Login from '../../components/account/OAuth2Login.vue';
+import OAuth2Signup from '../../components/account/OAuth2Signup.vue';
 import http from "@/util/http-common";
 export default {
-  // components : {
-  //   OAuth2Login
-  // },
+  components : {
+    OAuth2Signup
+  },
   name: "signup",
 
   data () {

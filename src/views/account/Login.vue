@@ -1,19 +1,11 @@
 <template>
   <div>
-    <div>
       <fieldset>
         <legend>
           <img src="../../assets/images/logo.png" width="500" height="100">
         </legend>
         <div class="form-group row">
           <br />
-          <img
-            src="https://i.ibb.co/1ZYtvQ8/logo.png"
-            height="100px"
-            width="500px"
-          />
-          <br />
-
         </div>
         <div class="form-group">
           <label for="exampleSelect1" class="form-label mt-4" style="float:left;">
@@ -43,7 +35,6 @@
         </div>
         </fieldset>
       <button class="btn btn-primary" @click="login({email,password})">로그인</button>
-    </div>
       <br><br>
       <section>
       <OAuth2Login/>
@@ -67,7 +58,6 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
-
   }),
 
 computed : {
