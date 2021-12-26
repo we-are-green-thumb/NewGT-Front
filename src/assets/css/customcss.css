@@ -49,8 +49,14 @@ html {
 /* 좋아요버튼 */
 .heart {
     position: absolute;
-    right: 436px;
-    bottom:7px;
+    left: 50px;
+    bottom:1px;
+}
+
+.pdbutton {
+    position: absolute;
+    right: 40px;
+    bottom:30px;
 }
 
 /* 노말라이즈 */
