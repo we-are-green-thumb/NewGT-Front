@@ -130,13 +130,13 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
-          localStorage.removeItem("fileUrl");
           alert("저장완료")
-          this.$router.push({name:"Plantfeeddetail"});
         })
         .catch((err) => {
           console.log(err);
           alert("저장실패");
+        }).then(() => {
+          this.$router.go(-1);
         });
     },
   },
@@ -144,6 +144,13 @@ export default {
 </script>
 <style scoped>
 .imgSize {
+  width: 180px;
+  height: 180px;
+  vertical-align: center;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
+}
+.imgSizeA {
   width: 180px;
   height: 180px;
   vertical-align: center;
