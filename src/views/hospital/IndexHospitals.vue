@@ -29,7 +29,7 @@
                 <img class="imgSizeA" :src="this.file" />
               </div>
               <div>
-                <h3>당신의 식물은 {{ Hospital.disease }}</h3>
+                <h3>당신의 식물은 {{ Hospital.diseaseName }}</h3>
                 을 앓고 있습니다.
                 <p>{{ Hospital.content }}</p>
               </div>
@@ -81,6 +81,7 @@ export default {
         .post("http://localhost:80/plant-hospital", { imageUrl: this.file })
         .then((res) => {
           this.Hospital = res.data;
+          console.log(res.data)
         })
         .catch((err) => {
           console.log(err);
