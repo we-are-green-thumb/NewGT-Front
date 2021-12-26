@@ -29,7 +29,7 @@
           <br />
           <br />
         </div>
-        <div class="pdbutton">
+        <div class="pdbutton" v-if="chekcWrite==true">
           <!-- <router-link :to="{ name: 'postupdate', params: { postId: postId } }"> -->
             <button
               type="button"
@@ -94,6 +94,7 @@ export default {
       yeslike: false,
       comments: [],
       writecomment: "",
+      chekcWrite: false,
     };
   },
   props: {
@@ -112,6 +113,7 @@ export default {
   //   },
   // },
   created() {
+    
     let token = localStorage.getItem("getToken");
     http
       .get("/post/" + this.$route.params.postId, {
@@ -119,9 +121,9 @@ export default {
       })
       .then((res) => {
         this.posts = res.data;
-        console.log(this.posts);
         this.writerId = res.data.writerId;
         this.logId = localStorage.getItem("getId");
+
         if (this.writerId == this.logId) {
           this.chekcWrite = true;
         }
