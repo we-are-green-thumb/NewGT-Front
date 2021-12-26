@@ -76,9 +76,10 @@ const routes = [
     
   },
   {
-    path: '/plantplus',
-    name: 'plantplus',
-    component: plantadd
+    path: '/plantadd',
+    name: 'plantadd',
+    component: plantadd,
+    props: true
   },
   {
     path: '/hospital',

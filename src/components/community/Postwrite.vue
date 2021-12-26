@@ -3,25 +3,21 @@
     <div class="form-group">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control-plaintext"
-                id="staticEmail"
-                v-model="title"
-                placeholder="제목을 입력해주세요."
-              />
-            </div>
-          </h4>
-
-          <select class="form-select" v-model="cate">
+          <input
+            class="pu-form-control"
+            id="exampleTextarea"
+            rows="1"
+            v-model="title"
+            placeholder="제목을 입력해주세요."
+          />
+          <br />
+          <select class="form-select" v-model="cate" >
             <option value="QnA">질문</option>
             <option value="free">자유</option>
             <option value="share">나눔거래</option>
           </select>
 
-          <br>
+          <br />
 
           <input
             class="form-control"
@@ -43,7 +39,7 @@
               placeholder="내용을 입력해주세요."
             ></textarea>
           </div>
-          <br><br>
+          <br /><br />
           <div class="pubutton">
             <button
               type="button"
@@ -147,5 +143,8 @@ export default {
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
+}
+input {
+  width: 100%;
 }
 </style>
