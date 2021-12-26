@@ -15,9 +15,10 @@
             </div>
           </h4>
 
-          <select class="form-select" v-model="post.cate">
-            <option value="QnA">질문</option>
+
+          <select class="form-select" v-model="cate">
             <option value="free">자유</option>
+            <option value="QnA">질문</option>
             <option value="share">나눔거래</option>
           </select>
 
