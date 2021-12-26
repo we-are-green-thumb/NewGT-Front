@@ -74,7 +74,7 @@ export default new Vuex.Store({
         let id = localStorage.getItem("getId");
 
         http
-          .get("/user/" + id, { headers: { authorization: `Bearer ${token}` } })
+          .get("/user/" + id + "/feed", { headers: { authorization: `Bearer ${token}` } })
           .then((response) => {
             console.log(response);
             let userInfo = {

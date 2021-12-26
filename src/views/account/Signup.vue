@@ -42,7 +42,6 @@
         </div>
         </fieldset>
         <br>
-
         <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4" style="float:left;">프로필 사진</label>
       <input class="form-control" type="file" id="formFile">
@@ -52,17 +51,22 @@
         <button type="submit" class="btn btn-primary" 
         @click="submitForm">회원가입</button>
       </fieldset>
+      <br><br>
+      <section>
+      <OAuth2Signup/>
+      </section>
     </v-form>
   </div>
 </template>
 
 <script>
-// import OAuth2Login from '../../components/account/OAuth2Login.vue';
+import OAuth2Signup from '../../components/account/OAuth2Signup.vue';
 import http from "@/util/http-common";
+
 export default {
-  // components : {
-  //   OAuth2Login
-  // },
+  components : {
+    OAuth2Signup
+  },
   name: "signup",
 
   data () {
@@ -108,5 +112,3 @@ methods: {
     }
   }
 </script>
-
-<style></style>
