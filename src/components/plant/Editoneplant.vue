@@ -142,8 +142,11 @@ export default {
           console.log(err);
         })
         .then(() => {
-          this.$router.go(-1, alert("수정완료"));
+          // this.$router.go(-1, alert("수정완료"));
+          alert("수정완료")
+          // this.$router.go({name:'IndexMain'});
           localStorage.removeItem("fileUrl");
+          this.$router.push({name:'IndexMain'});
         });
     },
     boardCancelClick() {

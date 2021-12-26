@@ -30,13 +30,15 @@
           <br />
         </div>
         <div class="pdbutton">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            onclick="location.href='postupdate'"
-          >
-            수정하기
-          </button>
+          <!-- <router-link :to="{ name: 'postupdate', params: { postId: postId } }"> -->
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              @click="clickEdit"
+            >
+              수정하기
+            </button>
+          <!-- </router-link> -->
           &nbsp;
           <button type="button" class="btn btn-outline-primary">
             삭제하기
@@ -140,6 +142,9 @@ export default {
       });
   },
   methods: {
+    clickEdit() {
+      this.$router.push({ name: "postupdate", params: { postId:  this.postId} });
+    },
     clickLike() {
       let token = localStorage.getItem("getToken");
       let id = localStorage.getItem("getId");

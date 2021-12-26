@@ -9,13 +9,13 @@
                 type="text"
                 class="form-control-plaintext"
                 id="staticEmail"
-                v-model="title"
+                v-model="post.title"
                 placeholder="제목을 입력해주세요."
               />
             </div>
           </h4>
 
-          <select class="form-select" v-model="cate">
+          <select class="form-select" v-model="post.cate">
             <option value="QnA">질문</option>
             <option value="free">자유</option>
             <option value="share">나눔거래</option>
@@ -32,14 +32,15 @@
             multiple
             @change="fileChange"
           />
-
           <br />
+          <img class="imgSizeA" :src="post.fileUrl" />
+
           <div class="form-group">
             <textarea
               class="pu-form-control"
               id="exampleTextarea"
               rows="10"
-              v-model="content"
+              v-model="post.content"
               placeholder="내용을 입력해주세요."
             ></textarea>
           </div>
@@ -65,15 +66,30 @@ import http from "@/util/http-common";
 export default {
   name: "postwrite",
   data: () => ({
-    cate: "",
-    title: "",
-    content: "",
     userId: "",
-    fileList: [],
     fileUrl: "",
+    post:[],
+    fileList:[]
   }),
+  props:{
+    postId:{}
+  },
   created() {
     this.userId = localStorage.getItem("getId");
+
+    let token = localStorage.getItem("getToken");
+    http
+      .get("/post/" + this.$route.params.postId, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        this.post = res.data;
+        console.log(this.post);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
   },
   methods: {
     async fileChange() {
@@ -86,29 +102,30 @@ export default {
           form
         );
         const { data } = res;
-        this.fileUrl = data.data.url;
+        this.post.fileUrl = data.data.url;
       } catch (error) {
         console.log(error);
-        this.fileUrl = "";
+        this.post.fileUrl = "";
       }
     },
 
     addPost() {
       let token = localStorage.getItem("getToken");
       let userId = localStorage.getItem("getId");
+    
       let data = {
-        title: this.title,
-        category: this.cate,
-        content: this.content,
-        fileUrl: this.fileUrl,
+        title: this.post.title,
+        category: this.post.cate,
+        content: this.post.content,
+        hits : this.post.hits,
+        fileUrl: this.post.fileUrl,
       };
       http
-        .post(
-          "user/" + userId + "/post",
+        .put(
+          "post/" +this.$route.params.postId,
           data,
-          // {headers: { Authorization: `Bearer ${token}`,'Content-Type': 'multipart/form-data'}
           { headers: { Authorization: `Bearer ${token}`, userId: userId } }
-        ) //게시글을 추가
+        ) //게시글을 수정
         .then((response) => {
           console.log(response);
 
@@ -147,5 +164,13 @@ export default {
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
+}
+
+.imgSizeA {
+  width: 180px;
+  height: 180px;
+  vertical-align: center;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
 }
 </style>
