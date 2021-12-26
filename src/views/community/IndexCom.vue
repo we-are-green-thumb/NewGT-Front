@@ -46,7 +46,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(post, i) in paginatedData" :key="reverse(i)">
+        <tr v-for="(post, i) in paginatedData" :key="i">
           <th scope="row" class="titletd" @click="clicketest(post), moveDetail">
             <a>
               <div>
