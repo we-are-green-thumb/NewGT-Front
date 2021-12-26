@@ -130,10 +130,9 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
-          this.$router.go(this.$router.currentRoute, alert("저장완료"));
-          // alert("저장완료")
-          // this.$router.push({name:"IndexMain"});
           localStorage.removeItem("fileUrl");
+          alert("저장완료")
+          this.$router.push({name:"Plantfeeddetail"});
         })
         .catch((err) => {
           console.log(err);
