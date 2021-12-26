@@ -4549,10 +4549,10 @@ fieldset:disabled .btn {
 .card-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  /* padding: 5%;
-  min-height: 400px;  
+  padding: 5%;
+  min-height: 400px;
   position: relative;
-  float: center; */
+  float: center;
 }
 .card-title {
   margin-bottom: 0.0rem;

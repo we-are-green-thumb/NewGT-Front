@@ -152,7 +152,7 @@ export default {
   margin-right: auto;
   margin-left: auto;
   background-color: white;
-  border: 1px solid burlywood;
+  /* border: 1px solid burlywood; */
   display: flex;
   flex-direction: column;
   align-items: center;
