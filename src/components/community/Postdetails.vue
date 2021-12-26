@@ -20,12 +20,12 @@
         </div>
 
         <div class="heart" @click="clickLike">
-          <a v-show="yeslike" style="font-size: xx-large; color: green">❤</a>
-          <a
+          <a  style="font-size: xx-large; color: green">❤</a>
+          <!-- <a
             v-show="yeslike == false"
             style="font-size: xx-large; color: lightgrey"
             >❤</a
-          >
+          > -->
           <br />
           <br />
         </div>
@@ -104,13 +104,13 @@ export default {
     ...mapState(["isLogin"]),
     ...mapState(["userInfo"]),
   },
-  watch: {
-    $route(to, from) {
-      if (to.path != from.path) {
-        this.$router.go(this.$router.currentRoute);
-      }
-    },
-  },
+  // watch: {
+  //   $route(to, from) {
+  //     if (to.path != from.path) {
+  //       this.$router.go(this.$router.currentRoute);
+  //     }
+  //   },
+  // },
   created() {
     let token = localStorage.getItem("getToken");
     http
@@ -157,7 +157,7 @@ export default {
           this.like = res.data;
           this.yeslike = !this.yeslike;
           alert(this.like);
-          this.$router.go(this.$router.currentRoute);
+          // this.$router.go(this.$router.currentRoute);
         })
         .catch((err) => {
           console.log(err);

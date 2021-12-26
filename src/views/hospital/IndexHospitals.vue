@@ -2,11 +2,11 @@
   <div>
     <form>
       <fieldset style="float: left">
-        <legend>식물병원이에요</legend>
+        <legend>💊식물병원이에요💊</legend>
 
         <div class="form-group">
           <label for="formFile" class="form-label mt-4"
-            >식물을 진단합니다</label
+            >식물을 진단합니다🩺</label
           >
           <input
             class="form-control"
@@ -16,21 +16,24 @@
             v-bind="fileList"
             @change="fileChange"
           />
-
+          <div>
+            <img class="imgSizeA" :src="this.file" />
+          </div>
+          <hr />
           <button type="button" class="btn btn-primary" @click="uploadFile">
-            Submit
+            진찰하기
           </button>
 
           <div class="resultform">
             <ul>
               <div></div>
+              <hr />
 
               <div>
-                <img class="imgSizeA" :src="this.file" />
-              </div>
-              <div>
-                <h3>당신의 식물은 {{ Hospital.diseaseName }}</h3>
-                을 앓고 있습니다.
+                <p>당신의 식물은</p>
+                <h3>{{ Hospital.diseaseName }}</h3>
+                <p>을 앓고 있습니다.</p>
+                <h5>병에 대한 해결책</h5>
                 <p>{{ Hospital.content }}</p>
               </div>
             </ul>
@@ -81,7 +84,7 @@ export default {
         .post("http://localhost:80/plant-hospital", { imageUrl: this.file })
         .then((res) => {
           this.Hospital = res.data;
-          console.log(res.data)
+          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
