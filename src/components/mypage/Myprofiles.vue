@@ -32,20 +32,9 @@
     <br />
 
     <div class="form-group">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          v-model="profile"
-          class="form-control"
-          placeholder="프로필"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-        />
-        <!-- <button class="btn btn-primary" type="submit" id="button-addon2">
-          변경
-        </button> -->
-      </div>
+      <textarea class="form-control" v-model="profile" placeholder="프로필" rows="3"></textarea>
     </div>
+
     <br />
 
     <div class="form-group">
