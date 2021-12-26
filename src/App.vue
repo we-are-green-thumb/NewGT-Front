@@ -53,7 +53,6 @@
               <li class="nav-item">
                 <a class="nav-link active" href="/"
                   >홈
-                  <!-- <img src="./assets/images/miniLogo.png" width="50" height="50"> -->
                   <span class="visually-hidden">(current)</span>
                 </a>
               </li>
@@ -61,18 +60,16 @@
                 <router-link  :to="{ name: 'plant', params: { userId: userId} }" class="nav-link">내식물</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/community">커뮤니티</a>
+                 <router-link  :to="{ name: 'community', params: { userId: userId} }" class="nav-link">커뮤니티</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">식물 MBTI</a>
+                <a class="nav-link" href="https://similarplant.netlify.app/">식물 MBTI</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/hospital">식물병원</a>
               </li>
               <li class="nav-item" v-if="isLogin">
-                <a class="nav-link" href="/plantplus">
-                식물등록
-                </a>
+                <router-link  :to="{ name: 'plantadd', params: { userId: this.userId} }" class="nav-link">식물등록</router-link>
               </li>
             </ul>
             <form class="d-flex">
