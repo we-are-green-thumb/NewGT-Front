@@ -42,7 +42,6 @@
         </div>
         </fieldset>
         <br>
-
         <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4" style="float:left;">프로필 사진</label>
       <input class="form-control" type="file" id="formFile">
@@ -63,6 +62,7 @@
 <script>
 import OAuth2Signup from '../../components/account/OAuth2Signup.vue';
 import http from "@/util/http-common";
+
 export default {
   components : {
     OAuth2Signup
@@ -112,5 +112,3 @@ methods: {
     }
   }
 </script>
-
-<style></style>
