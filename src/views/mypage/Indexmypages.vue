@@ -35,11 +35,12 @@
         checked=""
         @click="commentClick"
       />
-      <label class="btn btn-outline-primary" for="btnradio3"
-        >내가 쓴 댓글</label
+      <label class="btn btn-outline-primary" for="btnradio3">내가 쓴 댓글</label
       >
     </div>
     <br /><br /><br />
+
+    
 
     <div v-if="editFlag">
       <myprofile />
@@ -47,7 +48,6 @@
     <div v-if="postFlag">
       <mypost />
     </div>
-
     <div v-if="commentFlag">
       <mycomment />
     </div>
@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      editFlag: false,
+      editFlag: true,
       postFlag: false,
       commentFlag: false,
     };
