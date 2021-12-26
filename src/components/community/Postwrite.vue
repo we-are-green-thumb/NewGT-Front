@@ -1,19 +1,27 @@
 <template>
-  <div>
+  <div class="contents">
     <div class="form-group">
-      <label for="exampleSelect1" class="form-label mt-4">Example select</label>
       <select class="form-select" v-model="cate">
         <option value="free">자유</option>
         <option value="QnA">질문</option>
         <option value="share">나눔거래</option>
+        <option value="share">카테고리를 선택해주세요</option>
       </select>
 
-      <label for="exampleTextarea" class="form-label mt-4"
-        >Example textarea</label
-      >
-      <textarea class="form-control" rows="3" v-model="title"></textarea>
-      <textarea class="form-control" rows="3" v-model="content"></textarea>
+      <h4 class="card-title">
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control-plaintext"
+            id="staticEmail"
+            v-model="title"
+            placeholder="제목을 입력해주세요."
+          />
+        </div>
+      </h4>
+
       <input
+        class="form-control"
         v-bind="fileList"
         id="input_img"
         type="file"
@@ -21,7 +29,14 @@
         multiple
         @change="fileChange"
       />
-       <button @click="addPost" class="btn btn-primary">완료</button>
+      <!-- <textarea class="form-control" rows="3" v-model="title"></textarea> -->
+      <textarea
+        class="pu-form-control"
+        id="exampleTextarea"
+        rows="10"
+        v-model="content"
+      ></textarea>
+      <button @click="addPost" class="btn btn-primary">완료</button>
     </div>
   </div>
 </template>

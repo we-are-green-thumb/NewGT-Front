@@ -29,6 +29,19 @@
           <br />
           <br />
         </div>
+        <div class="pdbutton">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            onclick="location.href='postupdate'"
+          >
+            수정하기
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-outline-primary">
+            삭제하기
+          </button>
+        </div>
       </div>
     </div>
     <!-- <Commentlist :postcomment="posts.id"/> -->
@@ -36,7 +49,7 @@
       <div class="form-group">
         <div class="form-group">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" v-model="writecomment"/>
+            <input type="text" class="form-control" v-model="writecomment" />
             <button
               class="btn btn-primary"
               type="button"
@@ -120,7 +133,7 @@ export default {
       })
       .then((response) => {
         this.comments = response.data;
-        console.log(response.data)
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -139,7 +152,7 @@ export default {
           this.like = res.data;
           this.yeslike = !this.yeslike;
           alert(this.like);
-          this.$router.go(this.$router.currentRoute)
+          this.$router.go(this.$router.currentRoute);
         })
         .catch((err) => {
           console.log(err);
@@ -162,7 +175,7 @@ export default {
           console.log(err);
         })
         .then(() => {
-          this.$router.go(this.$router.currentRoute)
+          this.$router.go(this.$router.currentRoute);
         });
     },
   },
