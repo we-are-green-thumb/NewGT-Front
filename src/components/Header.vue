@@ -1,22 +1,30 @@
 <template>
-  <v-container absolute class="header">
-      <div class="headerBtn">
-        <section v-if="isLogin === true">
-          <div @click="logout">
-            <router-link :to="{name:'IndexMain'}" style="text-decoration:none; color: black; font-weight: bold">로그아웃&nbsp;&nbsp;
-            </router-link>
-          </div>
-          <router-link :to="{name:'editpage'}" style="text-decoration:none; color: black; font-weight: bold">마이페이지
-          </router-link>
-        </section>
-        <section v-else>
-          <router-link :to="{name:'loginform'}" style="text-decoration:none; color: black; font-weight: bold">로그인&nbsp;&nbsp;
-          </router-link>
-          <router-link :to="{name:'register'}" style="text-decoration:none; color: black; font-weight: bold">회원가입
-          </router-link>
-        </section>
+    <nav class="navbar navbar-expand-lg bg-logInNav">
+      <div class="navbar-collapse" id="navbarColor">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/login">
+              <img src="../assets/images/user.png"  width="30" height="30">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/signup">
+              <img src="../assets/images/signup.png"  width="25" height="23">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mypage">
+              <img src="../assets/images/mypage.png"  width="35" height="33">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <img src="../assets/images/logout.png"  width="40" height="33">
+            </a>
+          </li>
+        </ul>
       </div>
-  </v-container>
+    </nav>
 </template>
 
 <script>
